@@ -1,4 +1,4 @@
-# tfsec:ignore:aws-s3-enable-bucket-logging
+# trivy:ignore:AVD-AWS-0089
 resource "aws_s3_bucket" "logs" {
   bucket = var.logging_bucket_name
 }
@@ -49,7 +49,7 @@ resource "aws_s3_bucket_public_access_block" "logs" {
   restrict_public_buckets = true
 }
 
-# tfsec:ignore:aws-s3-encryption-customer-key
+# trivy:ignore:AVD-AWS-0132
 resource "aws_s3_bucket_server_side_encryption_configuration" "logs" {
   bucket = aws_s3_bucket.logs.id
 
@@ -98,7 +98,7 @@ resource "aws_s3_bucket_public_access_block" "web" {
   restrict_public_buckets = true
 }
 
-# tfsec:ignore:aws-s3-encryption-customer-key
+# trivy:ignore:AVD-AWS-0132
 resource "aws_s3_bucket_server_side_encryption_configuration" "web" {
   bucket = aws_s3_bucket.web.id
 
