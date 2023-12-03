@@ -1,4 +1,4 @@
-# tfsec:ignore:aws-cloudfront-enable-waf
+# trivy:ignore:AVD-AWS-0011
 resource "aws_cloudfront_distribution" "this" {
   origin {
     domain_name              = aws_s3_bucket.web.bucket_regional_domain_name
