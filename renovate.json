@@ -2,11 +2,11 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "dependencyDashboard": false,
   "extends": [
-    ":semanticCommitTypeAll(chore)",
-    "config.base"
+    "config:recommended",
+    ":semanticCommitTypeAll(chore)"
   ],
   "schedule": [
-    "after 01:00 and before 06:00 every day"
+    "after 01:00 and before 06:00"
   ],
   "timezone": "Asia/Tokyo"
 }
