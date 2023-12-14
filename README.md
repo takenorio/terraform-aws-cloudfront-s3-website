@@ -28,23 +28,21 @@ module "cloudfront_s3_website" {
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 5.30.0 |
-| <a name="provider_aws.us-east-1"></a> [aws.us-east-1](#provider\_aws.us-east-1) | 5.30.0 |
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_domain_certificate"></a> [domain\_certificate](#module\_domain\_certificate) | ./modules/domain-certificate | n/a |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aws_acm_certificate.this](https://registry.terraform.io/providers/hashicorp/aws/5.30.0/docs/resources/acm_certificate) | resource |
-| [aws_acm_certificate_validation.this](https://registry.terraform.io/providers/hashicorp/aws/5.30.0/docs/resources/acm_certificate_validation) | resource |
 | [aws_cloudfront_distribution.this](https://registry.terraform.io/providers/hashicorp/aws/5.30.0/docs/resources/cloudfront_distribution) | resource |
 | [aws_cloudfront_function.this](https://registry.terraform.io/providers/hashicorp/aws/5.30.0/docs/resources/cloudfront_function) | resource |
 | [aws_cloudfront_monitoring_subscription.this](https://registry.terraform.io/providers/hashicorp/aws/5.30.0/docs/resources/cloudfront_monitoring_subscription) | resource |
 | [aws_cloudfront_origin_access_control.this](https://registry.terraform.io/providers/hashicorp/aws/5.30.0/docs/resources/cloudfront_origin_access_control) | resource |
-| [aws_route53_record.certificate](https://registry.terraform.io/providers/hashicorp/aws/5.30.0/docs/resources/route53_record) | resource |
 | [aws_route53_record.web](https://registry.terraform.io/providers/hashicorp/aws/5.30.0/docs/resources/route53_record) | resource |
 | [aws_s3_bucket.logs](https://registry.terraform.io/providers/hashicorp/aws/5.30.0/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket.web](https://registry.terraform.io/providers/hashicorp/aws/5.30.0/docs/resources/s3_bucket) | resource |
@@ -85,7 +83,7 @@ No modules.
 |------|-------------|
 | <a name="output_acm_certificate_arn"></a> [acm\_certificate\_arn](#output\_acm\_certificate\_arn) | ARN of the certificate. |
 | <a name="output_acm_certificate_domain_name"></a> [acm\_certificate\_domain\_name](#output\_acm\_certificate\_domain\_name) | ARN of the certificate. |
-| <a name="output_acm_certificate_domain_validation_options"></a> [acm\_certificate\_domain\_validation\_options](#output\_acm\_certificate\_domain\_validation\_options) | Set of domain validation objects which can be used to complete certificate validation. Can have more than one element, e.g., if SANs are defined. Only set if DNS-validation was used. |
+| <a name="output_acm_certificate_domain_validation_options"></a> [acm\_certificate\_domain\_validation\_options](#output\_acm\_certificate\_domain\_validation\_options) | Set of domain validation objects which can be used to complete certificate validation. |
 | <a name="output_acm_certificate_not_after"></a> [acm\_certificate\_not\_after](#output\_acm\_certificate\_not\_after) | Expiration date and time of the certificate. |
 | <a name="output_acm_certificate_not_before"></a> [acm\_certificate\_not\_before](#output\_acm\_certificate\_not\_before) | Start of the validity period of the certificate. |
 | <a name="output_acm_certificate_pending_renewal"></a> [acm\_certificate\_pending\_renewal](#output\_acm\_certificate\_pending\_renewal) | true if a Private certificate eligible for managed renewal is within the early\_renewal\_duration period. |

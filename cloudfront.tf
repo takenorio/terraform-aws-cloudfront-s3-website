@@ -1,3 +1,8 @@
+data "aws_route53_zone" "this" {
+  name         = var.domain_name
+  private_zone = false
+}
+
 # trivy:ignore:AVD-AWS-0011
 resource "aws_cloudfront_distribution" "this" {
   origin {
@@ -14,7 +19,7 @@ resource "aws_cloudfront_distribution" "this" {
   http_version        = "http2and3"
   is_ipv6_enabled     = true
   price_class         = "PriceClass_All"
-  #web_acl_id         = aws_wafv2_web_acl.this.arn
+  #web_acl_id          = aws_wafv2_web_acl.this.arn
 
   custom_error_response {
     error_caching_min_ttl = 0
@@ -52,7 +57,7 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = aws_acm_certificate.this.arn
+    acm_certificate_arn      = module.domain_certificate.acm_certificate_arn
     minimum_protocol_version = "TLSv1.2_2021"
     ssl_support_method       = "sni-only"
   }
@@ -81,4 +86,16 @@ resource "aws_cloudfront_origin_access_control" "this" {
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
+}
+
+resource "aws_route53_record" "web" {
+  name    = var.domain_name
+  type    = "A"
+  zone_id = data.aws_route53_zone.this.zone_id
+
+  alias {
+    evaluate_target_health = false
+    name                   = aws_cloudfront_distribution.this.domain_name
+    zone_id                = aws_cloudfront_distribution.this.hosted_zone_id
+  }
 }
