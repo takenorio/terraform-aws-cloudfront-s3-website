@@ -170,62 +170,62 @@ output "route53_record_web_name" {
 
 output "s3_bucket_logs_arn" {
   description = "ARN of the bucket (logs)."
-  value       = "aws_s3_bucket.logs.arn"
+  value       = "module.logging_bucket.s3_bucket_arn"
 }
 
 output "s3_bucket_logs_domain_name" {
   description = "Bucket domain name (logs)."
-  value       = "aws_s3_bucket.logs.bucket_domain_name"
+  value       = "module.logging_bucket.s3_bucket_domain_name"
 }
 
 output "s3_bucket_logs_hosted_zone_id" {
   description = "Route 53 Hosted Zone ID for this bucket's region (logs)."
-  value       = "aws_s3_bucket.logs.hosted_zone_id"
+  value       = "module.logging_bucket.s3_bucket_hosted_zone_id"
 }
 
 output "s3_bucket_logs_id" {
   description = "Name of the bucket (logs)."
-  value       = "aws_s3_bucket.logs.id"
+  value       = "module.logging_bucket.s3_bucket_id"
 }
 
 output "s3_bucket_logs_region" {
   description = "AWS region this bucket resides in (logs)."
-  value       = "aws_s3_bucket.logs.region"
+  value       = "module.logging_bucket.s3_bucket_region"
 }
 
 output "s3_bucket_logs_regional_domain_name" {
   description = "The bucket region-specific domain name (logs)."
-  value       = "aws_s3_bucket.logs.bucket_regional_domain_name"
+  value       = "module.logging_bucket.s3_bucket_regional_domain_name"
 }
 
 output "s3_bucket_logs_tags_all" {
   description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block (logs)."
-  value       = "aws_s3_bucket.logs.tags_all"
+  value       = "module.logging_bucket.s3_bucket_tags_all"
 }
 
 output "s3_bucket_acl_logs_id" {
   description = "The bucket, expected_bucket_owner (if configured), and acl (if configured) separated by commas (,) (logs)."
-  value       = "aws_s3_bucket_acl.logs.id"
+  value       = "module.logging_bucket.s3_bucket_acl_id"
 }
 
 output "s3_bucket_ownership_controls_logs_id" {
   description = "S3 Bucket name (logs)."
-  value       = "aws_s3_bucket_ownership_controls.logs.id"
+  value       = "module.logging_bucket.s3_bucket_ownership_controls_id"
 }
 
 output "s3_bucket_public_access_block_logs_id" {
   description = "Name of the S3 bucket the configuration is attached to (logs)."
-  value       = "aws_s3_bucket_public_access_block.logs.id"
+  value       = "module.logging_bucket.s3_bucket_public_access_block_id"
 }
 
 output "s3_bucket_server_side_encryption_configuration_logs_id" {
   description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (logs)."
-  value       = "aws_s3_bucket_server_side_encryption_configuration.logs.id"
+  value       = "module.logging_bucket.s3_bucket_server_side_encryption_configuration_id"
 }
 
 output "s3_bucket_versioning_logs_id" {
   description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (logs)."
-  value       = "aws_s3_bucket_versioning.logs.id"
+  value       = "module.logging_bucket.s3_bucket_versioning_id"
 }
 
 output "s3_bucket_web_arn" {
