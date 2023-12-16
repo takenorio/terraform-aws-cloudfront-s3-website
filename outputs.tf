@@ -230,65 +230,65 @@ output "s3_bucket_versioning_logs_id" {
 
 output "s3_bucket_web_arn" {
   description = "ARN of the bucket (web)."
-  value       = "aws_s3_bucket.web.arn"
+  value       = "module.website_bucket.s3_bucket_arn"
 }
 
 output "s3_bucket_web_domain_name" {
   description = "Bucket domain name (web)."
-  value       = "aws_s3_bucket.web.bucket_domain_name"
+  value       = "module.website_bucket.s3_bucket_domain_name"
 }
 
 output "s3_bucket_web_hosted_zone_id" {
   description = "Route 53 Hosted Zone ID for this bucket's region (web)."
-  value       = "aws_s3_bucket.web.hosted_zone_id"
+  value       = "module.website_bucket.s3_bucket_hosted_zone_id"
 }
 
 output "s3_bucket_web_id" {
   description = "Name of the bucket (web)."
-  value       = "aws_s3_bucket.web.id"
+  value       = "module.website_bucket.s3_bucket_id"
 }
 
 output "s3_bucket_web_region" {
   description = "AWS region this bucket resides in (web)."
-  value       = "aws_s3_bucket.web.region"
+  value       = "module.website_bucket.s3_bucket_region"
 }
 
 output "s3_bucket_web_regional_domain_name" {
   description = "The bucket region-specific domain name (web)."
-  value       = "aws_s3_bucket.web.bucket_regional_domain_name"
+  value       = "module.website_bucket.s3_bucket_regional_domain_name"
 }
 
 output "s3_bucket_web_tags_all" {
   description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block (web)."
-  value       = "aws_s3_bucket.web.tags_all"
+  value       = "module.website_bucket.s3_bucket_tags_all"
 }
 
 output "s3_bucket_acl_web_id" {
   description = "The bucket, expected_bucket_owner (if configured), and acl (if configured) separated by commas (,) (web)."
-  value       = "aws_s3_bucket_acl.web.id"
+  value       = "module.website_bucket.s3_bucket_acl_id"
 }
 
 output "s3_bucket_logging_web_id" {
   description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided. (web)"
-  value       = "aws_s3_bucket_logging.web.id"
+  value       = "module.website_bucket.s3_bucket_logging_id"
 }
 
 output "s3_bucket_ownership_controls_web_id" {
   description = "S3 Bucket name (web)."
-  value       = "aws_s3_bucket_ownership_controls.web.id"
+  value       = "module.website_bucket.s3_bucket_ownership_controls_id"
 }
 
 output "s3_bucket_public_access_block_web_id" {
   description = "Name of the S3 bucket the configuration is attached to (web)."
-  value       = "aws_s3_bucket_public_access_block.web.id"
+  value       = "module.website_bucket.s3_bucket_public_access_block_id"
 }
 
 output "s3_bucket_server_side_encryption_configuration_web_id" {
   description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (web)."
-  value       = "aws_s3_bucket_server_side_encryption_configuration.web.id"
+  value       = "module.website_bucket.s3_bucket_server_side_encryption_configuration_id"
 }
 
 output "s3_bucket_versioning_web_id" {
   description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (web)."
-  value       = "aws_s3_bucket_versioning.web.id"
+  value       = "module.website_bucket.s3_bucket_versioning_id"
 }
