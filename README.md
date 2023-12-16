@@ -35,6 +35,7 @@ module "cloudfront_s3_website" {
 |------|--------|---------|
 | <a name="module_domain_certificate"></a> [domain\_certificate](#module\_domain\_certificate) | ./modules/domain-certificate | n/a |
 | <a name="module_logging_bucket"></a> [logging\_bucket](#module\_logging\_bucket) | ./modules/logging-bucket | n/a |
+| <a name="module_website_bucket"></a> [website\_bucket](#module\_website\_bucket) | ./modules/website-bucket | n/a |
 
 ## Resources
 
@@ -44,18 +45,12 @@ module "cloudfront_s3_website" {
 | [aws_cloudfront_function.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/cloudfront_function) | resource |
 | [aws_cloudfront_monitoring_subscription.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/cloudfront_monitoring_subscription) | resource |
 | [aws_cloudfront_origin_access_control.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/cloudfront_origin_access_control) | resource |
-| [aws_route53_record.web](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/route53_record) | resource |
-| [aws_s3_bucket.web](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_logging.web](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_logging) | resource |
-| [aws_s3_bucket_ownership_controls.web](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_ownership_controls) | resource |
-| [aws_s3_bucket_policy.web](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_policy) | resource |
-| [aws_s3_bucket_public_access_block.web](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_public_access_block) | resource |
-| [aws_s3_bucket_server_side_encryption_configuration.web](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
-| [aws_s3_bucket_versioning.web](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_versioning) | resource |
+| [aws_route53_record.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/route53_record) | resource |
+| [aws_s3_bucket_policy.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_policy) | resource |
 | [aws_cloudfront_cache_policy.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/data-sources/cloudfront_cache_policy) | data source |
 | [aws_cloudfront_origin_request_policy.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/data-sources/cloudfront_origin_request_policy) | data source |
 | [aws_cloudfront_response_headers_policy.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/data-sources/cloudfront_response_headers_policy) | data source |
-| [aws_iam_policy_document.web](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_route53_zone.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/data-sources/route53_zone) | data source |
 
 ## Inputs
