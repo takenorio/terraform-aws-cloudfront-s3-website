@@ -10,3 +10,10 @@ module "logging_bucket" {
   logging_bucket_name = var.logging_bucket_name
   web_bucket_name     = var.web_bucket_name
 }
+
+module "website_bucket" {
+  source = "./modules/website-bucket"
+
+  logging_bucket_name = var.logging_bucket_name
+  web_bucket_name     = var.web_bucket_name
+}
