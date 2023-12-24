@@ -58,12 +58,12 @@ output "acm_certificate_validation_id" {
   value       = aws_acm_certificate_validation.this.id
 }
 
-output "route53_record_certificate_fqdn" {
+output "route53_record_fqdn" {
   description = "FQDN built using the zone domain and name."
-  value       = "aws_route53_record.this[$var.domain_name].fqdn"
+  value       = aws_route53_record.this[var.domain_name].fqdn
 }
 
-output "route53_record_certificate_name" {
+output "route53_record_name" {
   description = "The name of the record."
-  value       = "aws_route53_record.this[$var.domain_name].name"
+  value       = aws_route53_record.this[var.domain_name].name
 }

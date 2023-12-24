@@ -1,3 +1,15 @@
+data "aws_cloudfront_cache_policy" "this" {
+  name = "Managed-CachingOptimized"
+}
+
+data "aws_cloudfront_origin_request_policy" "this" {
+  name = "Managed-CORS-S3Origin"
+}
+
+data "aws_cloudfront_response_headers_policy" "this" {
+  name = "Managed-SecurityHeadersPolicy"
+}
+
 data "aws_iam_policy_document" "this" {
   version = "2012-10-17"
 
@@ -5,7 +17,7 @@ data "aws_iam_policy_document" "this" {
     sid       = "AllowCloudFrontServicePrincipalReadOnly"
     effect    = "Allow"
     actions   = ["s3:GetObject"]
-    resources = ["${module.website_bucket.s3_bucket_arn}/*"]
+    resources = ["arn:aws:s3:::${var.web_bucket_name}/*"]
 
     principals {
       type        = "Service"
@@ -25,12 +37,17 @@ data "aws_route53_zone" "this" {
   private_zone = false
 }
 
+locals {
+  logging_bucket_domain_name = "${var.logging_bucket_name}.s3.amazonaws.com"
+  website_bucket_domain_name = "${var.web_bucket_name}.s3.amazonaws.com"
+}
+
 # trivy:ignore:AVD-AWS-0011
 resource "aws_cloudfront_distribution" "this" {
   origin {
-    domain_name              = module.website_bucket.s3_bucket_regional_domain_name
+    domain_name              = local.website_bucket_domain_name
     origin_access_control_id = aws_cloudfront_origin_access_control.this.id
-    origin_id                = module.website_bucket.s3_bucket_regional_domain_name
+    origin_id                = local.website_bucket_domain_name
     origin_path              = ""
   }
 
@@ -57,7 +74,7 @@ resource "aws_cloudfront_distribution" "this" {
     compress                   = true
     origin_request_policy_id   = data.aws_cloudfront_origin_request_policy.this.id
     response_headers_policy_id = data.aws_cloudfront_response_headers_policy.this.id
-    target_origin_id           = module.website_bucket.s3_bucket_regional_domain_name
+    target_origin_id           = local.website_bucket_domain_name
     viewer_protocol_policy     = "redirect-to-https"
 
     function_association {
@@ -68,7 +85,7 @@ resource "aws_cloudfront_distribution" "this" {
 
   logging_config {
     include_cookies = false
-    bucket          = module.logging_bucket.s3_bucket_regional_domain_name
+    bucket          = local.logging_bucket_domain_name
     prefix          = "cloudfront-logs/"
   }
 
@@ -79,7 +96,7 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = module.domain_certificate.acm_certificate_arn
+    acm_certificate_arn      = var.acm_certificate_arn
     minimum_protocol_version = "TLSv1.2_2021"
     ssl_support_method       = "sni-only"
   }
@@ -104,7 +121,7 @@ resource "aws_cloudfront_monitoring_subscription" "this" {
 }
 
 resource "aws_cloudfront_origin_access_control" "this" {
-  name                              = module.website_bucket.s3_bucket_regional_domain_name
+  name                              = local.website_bucket_domain_name
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
