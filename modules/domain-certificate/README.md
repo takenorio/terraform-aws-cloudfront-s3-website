@@ -45,6 +45,6 @@ No modules.
 | <a name="output_acm_certificate_tags_all"></a> [acm\_certificate\_tags\_all](#output\_acm\_certificate\_tags\_all) | Map of tags assigned to the resource, including those inherited from the provider default\_tags configuration block. |
 | <a name="output_acm_certificate_type"></a> [acm\_certificate\_type](#output\_acm\_certificate\_type) | Source of the certificate. |
 | <a name="output_acm_certificate_validation_id"></a> [acm\_certificate\_validation\_id](#output\_acm\_certificate\_validation\_id) | Time at which the certificate was issued. |
-| <a name="output_route53_record_certificate_fqdn"></a> [route53\_record\_certificate\_fqdn](#output\_route53\_record\_certificate\_fqdn) | FQDN built using the zone domain and name. |
-| <a name="output_route53_record_certificate_name"></a> [route53\_record\_certificate\_name](#output\_route53\_record\_certificate\_name) | The name of the record. |
+| <a name="output_route53_record_fqdn"></a> [route53\_record\_fqdn](#output\_route53\_record\_fqdn) | FQDN built using the zone domain and name. |
+| <a name="output_route53_record_name"></a> [route53\_record\_name](#output\_route53\_record\_name) | The name of the record. |
 <!-- END_TF_DOCS -->

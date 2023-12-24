@@ -25,33 +25,20 @@ module "cloudfront_s3_website" {
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.31.0 |
+No providers.
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_cdn_distribution"></a> [cdn\_distribution](#module\_cdn\_distribution) | ./modules/cdn-distribution | n/a |
 | <a name="module_domain_certificate"></a> [domain\_certificate](#module\_domain\_certificate) | ./modules/domain-certificate | n/a |
 | <a name="module_logging_bucket"></a> [logging\_bucket](#module\_logging\_bucket) | ./modules/logging-bucket | n/a |
 | <a name="module_website_bucket"></a> [website\_bucket](#module\_website\_bucket) | ./modules/website-bucket | n/a |
 
 ## Resources
 
-| Name | Type |
-|------|------|
-| [aws_cloudfront_distribution.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/cloudfront_distribution) | resource |
-| [aws_cloudfront_function.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/cloudfront_function) | resource |
-| [aws_cloudfront_monitoring_subscription.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/cloudfront_monitoring_subscription) | resource |
-| [aws_cloudfront_origin_access_control.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/cloudfront_origin_access_control) | resource |
-| [aws_route53_record.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/route53_record) | resource |
-| [aws_s3_bucket_policy.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_policy) | resource |
-| [aws_cloudfront_cache_policy.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/data-sources/cloudfront_cache_policy) | data source |
-| [aws_cloudfront_origin_request_policy.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/data-sources/cloudfront_origin_request_policy) | data source |
-| [aws_cloudfront_response_headers_policy.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/data-sources/cloudfront_response_headers_policy) | data source |
-| [aws_iam_policy_document.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/data-sources/iam_policy_document) | data source |
-| [aws_route53_zone.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/data-sources/route53_zone) | data source |
+No resources.
 
 ## Inputs
 
@@ -101,8 +88,7 @@ module "cloudfront_s3_website" {
 | <a name="output_route53_record_web_fqdn"></a> [route53\_record\_web\_fqdn](#output\_route53\_record\_web\_fqdn) | FQDN built using the zone domain and name (web). |
 | <a name="output_route53_record_web_name"></a> [route53\_record\_web\_name](#output\_route53\_record\_web\_name) | The name of the record (web). |
 | <a name="output_s3_bucket_acl_logs_id"></a> [s3\_bucket\_acl\_logs\_id](#output\_s3\_bucket\_acl\_logs\_id) | The bucket, expected\_bucket\_owner (if configured), and acl (if configured) separated by commas (,) (logs). |
-| <a name="output_s3_bucket_acl_web_id"></a> [s3\_bucket\_acl\_web\_id](#output\_s3\_bucket\_acl\_web\_id) | The bucket, expected\_bucket\_owner (if configured), and acl (if configured) separated by commas (,) (web). |
-| <a name="output_s3_bucket_logging_web_id"></a> [s3\_bucket\_logging\_web\_id](#output\_s3\_bucket\_logging\_web\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided. (web) |
+| <a name="output_s3_bucket_logging_web_id"></a> [s3\_bucket\_logging\_web\_id](#output\_s3\_bucket\_logging\_web\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided (web). |
 | <a name="output_s3_bucket_logs_arn"></a> [s3\_bucket\_logs\_arn](#output\_s3\_bucket\_logs\_arn) | ARN of the bucket (logs). |
 | <a name="output_s3_bucket_logs_domain_name"></a> [s3\_bucket\_logs\_domain\_name](#output\_s3\_bucket\_logs\_domain\_name) | Bucket domain name (logs). |
 | <a name="output_s3_bucket_logs_hosted_zone_id"></a> [s3\_bucket\_logs\_hosted\_zone\_id](#output\_s3\_bucket\_logs\_hosted\_zone\_id) | Route 53 Hosted Zone ID for this bucket's region (logs). |
