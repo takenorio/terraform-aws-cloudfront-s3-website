@@ -19,7 +19,7 @@ data "aws_iam_policy_document" "this" {
     condition {
       test     = "ArnLike"
       variable = "aws:SourceArn"
-      values   = ["arn:aws:s3:::${var.web_bucket_name}"]
+      values   = ["arn:aws:s3:::${var.website_bucket_name}"]
     }
 
     condition {
