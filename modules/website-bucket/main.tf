@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "this" {
-  bucket = var.web_bucket_name
+  bucket = var.website_bucket_name
 }
 
 resource "aws_s3_bucket_logging" "this" {

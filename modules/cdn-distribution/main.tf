@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "this" {
     sid       = "AllowCloudFrontServicePrincipalReadOnly"
     effect    = "Allow"
     actions   = ["s3:GetObject"]
-    resources = ["arn:aws:s3:::${var.web_bucket_name}/*"]
+    resources = ["arn:aws:s3:::${var.website_bucket_name}/*"]
 
     principals {
       type        = "Service"
@@ -39,7 +39,7 @@ data "aws_route53_zone" "this" {
 
 locals {
   logging_bucket_domain_name = "${var.logging_bucket_name}.s3.amazonaws.com"
-  website_bucket_domain_name = "${var.web_bucket_name}.s3.amazonaws.com"
+  website_bucket_domain_name = "${var.website_bucket_name}.s3.amazonaws.com"
 }
 
 # trivy:ignore:AVD-AWS-0011
@@ -58,7 +58,6 @@ resource "aws_cloudfront_distribution" "this" {
   http_version        = "http2and3"
   is_ipv6_enabled     = true
   price_class         = "PriceClass_All"
-  #web_acl_id          = aws_wafv2_web_acl.this.arn
 
   custom_error_response {
     error_caching_min_ttl = 0
@@ -140,6 +139,6 @@ resource "aws_route53_record" "this" {
 }
 
 resource "aws_s3_bucket_policy" "this" {
-  bucket = var.web_bucket_name
+  bucket = var.website_bucket_name
   policy = data.aws_iam_policy_document.this.json
 }

@@ -1,6 +1,11 @@
 variable "acm_certificate_arn" {
   type        = string
-  description = ""
+  description = "ARN of the ACM certificate."
+
+  validation {
+    condition     = can(regex("^arn:aws:acm:us-east-1:[0-9]{12}:certificate/[a-f0-9-]+$", var.acm_certificate_arn))
+    error_message = "The ACM certificate ARN is invalid."
+  }
 }
 
 variable "cloudfront_distribution_comment" {
@@ -64,42 +69,42 @@ variable "logging_bucket_name" {
   }
 }
 
-variable "web_bucket_name" {
+variable "website_bucket_name" {
   description = "Name of the S3 bucket for storing website content. Must be globally unique."
   type        = string
 
   validation {
-    condition     = length(var.web_bucket_name) >= 3 && length(var.web_bucket_name) <= 63
+    condition     = length(var.website_bucket_name) >= 3 && length(var.website_bucket_name) <= 63
     error_message = "Bucket names must be between 3 (min) and 63 (max) characters long."
   }
 
   validation {
-    condition     = can(regex("^[a-z0-9-.]+$", var.web_bucket_name))
+    condition     = can(regex("^[a-z0-9-.]+$", var.website_bucket_name))
     error_message = "Bucket names can consist only of lowercase letters, numbers, dots (.), and hyphens (-)."
   }
 
   validation {
-    condition     = can(regex("^[a-z0-9]", var.web_bucket_name)) && can(regex("[a-z0-9]$", var.web_bucket_name))
+    condition     = can(regex("^[a-z0-9]", var.website_bucket_name)) && can(regex("[a-z0-9]$", var.website_bucket_name))
     error_message = "Bucket names must begin and end with a letter or number."
   }
 
   validation {
-    condition     = !can(regex("[.]{2}", var.web_bucket_name))
+    condition     = !can(regex("[.]{2}", var.website_bucket_name))
     error_message = "Bucket names must not contain two adjacent periods."
   }
 
   validation {
-    condition     = !can(regex("^(\\d+\\.\\d+\\.\\d+\\.\\d+)$", var.web_bucket_name))
+    condition     = !can(regex("^(\\d+\\.\\d+\\.\\d+\\.\\d+)$", var.website_bucket_name))
     error_message = "Bucket names must not be formatted as an IP address."
   }
 
   validation {
-    condition     = !startswith(var.web_bucket_name, "xn--") && !startswith(var.web_bucket_name, "sthree-")
+    condition     = !startswith(var.website_bucket_name, "xn--") && !startswith(var.website_bucket_name, "sthree-")
     error_message = "Bucket names must not start with the prefix `xn--` and the prefix `sthree-`."
   }
 
   validation {
-    condition     = !endswith(var.web_bucket_name, "-s3alias") && !endswith(var.web_bucket_name, "--ol-s3")
+    condition     = !endswith(var.website_bucket_name, "-s3alias") && !endswith(var.website_bucket_name, "--ol-s3")
     error_message = "Bucket names must not end with the suffix `-s3alias` and the suffix `--ol-s3`."
   }
 }
