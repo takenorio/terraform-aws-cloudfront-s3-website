@@ -47,7 +47,7 @@ No resources.
 | <a name="input_cloudfront_distribution_comment"></a> [cloudfront\_distribution\_comment](#input\_cloudfront\_distribution\_comment) | A comment to describe the CloudFront distribution. | `string` | `"static website"` | no |
 | <a name="input_domain_name"></a> [domain\_name](#input\_domain\_name) | The domain name to be managed by Route53. | `string` | n/a | yes |
 | <a name="input_logging_bucket_name"></a> [logging\_bucket\_name](#input\_logging\_bucket\_name) | Name of the S3 bucket for storing logs. Must be globally unique. | `string` | n/a | yes |
-| <a name="input_web_bucket_name"></a> [web\_bucket\_name](#input\_web\_bucket\_name) | Name of the S3 bucket for storing website content. Must be globally unique. | `string` | n/a | yes |
+| <a name="input_website_bucket_name"></a> [website\_bucket\_name](#input\_website\_bucket\_name) | Name of the S3 bucket for storing website content. Must be globally unique. | `string` | n/a | yes |
 
 ## Outputs
 
