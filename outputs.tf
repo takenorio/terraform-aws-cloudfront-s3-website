@@ -228,6 +228,81 @@ output "s3_bucket_versioning_logs_id" {
   value       = module.logging_bucket.s3_bucket_versioning_id
 }
 
+output "s3_bucket_redirection_arn" {
+  description = "ARN of the bucket (redirection)."
+  value       = module.redirection_bucket.s3_bucket_arn
+}
+
+output "s3_bucket_redirection_domain_name" {
+  description = "Bucket domain name (redirection)."
+  value       = module.redirection_bucket.s3_bucket_domain_name
+}
+
+output "s3_bucket_redirection_hosted_zone_id" {
+  description = "Route 53 Hosted Zone ID for this bucket's region (redirection)."
+  value       = module.redirection_bucket.s3_bucket_hosted_zone_id
+}
+
+output "s3_bucket_redirection_id" {
+  description = "Name of the bucket (redirection)."
+  value       = module.redirection_bucket.s3_bucket_id
+}
+
+output "s3_bucket_redirection_region" {
+  description = "AWS region this bucket resides in (redirection)."
+  value       = module.redirection_bucket.s3_bucket_region
+}
+
+output "s3_bucket_redirection_regional_domain_name" {
+  description = "The bucket region-specific domain name (redirection)."
+  value       = module.redirection_bucket.s3_bucket_regional_domain_name
+}
+
+output "s3_bucket_redirection_tags_all" {
+  description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block (redirection)."
+  value       = module.redirection_bucket.s3_bucket_tags_all
+}
+
+output "s3_bucket_logging_redirection_id" {
+  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (redirection)."
+  value       = module.redirection_bucket.s3_bucket_logging_id
+}
+
+output "s3_bucket_ownership_controls_redirection_id" {
+  description = "S3 Bucket name (redirection)."
+  value       = module.redirection_bucket.s3_bucket_ownership_controls_id
+}
+
+output "s3_bucket_public_access_block_redirection_id" {
+  description = "Name of the S3 bucket the configuration is attached to (redirection)."
+  value       = module.redirection_bucket.s3_bucket_public_access_block_id
+}
+
+output "s3_bucket_server_side_encryption_configuration_redirection_id" {
+  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (redirection)."
+  value       = module.redirection_bucket.s3_bucket_server_side_encryption_configuration_id
+}
+
+output "s3_bucket_versioning_redirection_id" {
+  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (redirection)."
+  value       = module.redirection_bucket.s3_bucket_versioning_id
+}
+
+output "s3_bucket_website_configuration_redirection_id" {
+  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (redirection)."
+  value       = module.redirection_bucket.s3_bucket_website_configuration_id
+}
+
+output "s3_bucket_website_configuration_redirection_website_domain" {
+  description = "Domain of the website endpoint. This is used to create Route 53 alias records (redirection)."
+  value       = module.redirection_bucket.s3_bucket_website_configuration_website_domain
+}
+
+output "s3_bucket_website_configuration_redirection_website_endpoint" {
+  description = "Website endpoint (redirection)."
+  value       = module.redirection_bucket.s3_bucket_website_configuration_website_endpoint
+}
+
 output "s3_bucket_web_arn" {
   description = "ARN of the bucket (web)."
   value       = module.website_bucket.s3_bucket_arn

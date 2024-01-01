@@ -11,6 +11,14 @@ module "logging_bucket" {
   website_bucket_name = var.website_bucket_name
 }
 
+module "redirection_bucket" {
+  source = "./modules/redirection-bucket"
+
+  domain_name             = var.domain_name
+  logging_bucket_name     = var.logging_bucket_name
+  redirection_bucket_name = var.redirection_bucket_name
+}
+
 module "website_bucket" {
   source = "./modules/website-bucket"
 
