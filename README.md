@@ -2,7 +2,11 @@
 
 ## Overview
 
-This Terraform module efficiently deploys a static website using AWS infrastructure, ideal for straightforward and quick website setups.
+This Terraform module efficiently deploys a static website using AWS infrastructure, ideal for straightforward and quick website setups. It assumes that your domain is managed with Amazon Route 53, which simplifies DNS and domain configuration.
+
+## Prerequisites
+
+Domain managed by AWS Route 53.
 
 ## Usage
 
@@ -10,8 +14,6 @@ This Terraform module efficiently deploys a static website using AWS infrastruct
 module "cloudfront_s3_website" {
   source              = "takenorio/cloudfront-s3-website/aws"
   domain_name         = "example.com"
-  logging_bucket_name = "your-logging-bucket-name"
-  web_bucket_name     = "your-website-bucket-name"
 }
 ```
 
