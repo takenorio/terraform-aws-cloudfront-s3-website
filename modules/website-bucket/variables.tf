@@ -1,3 +1,8 @@
+variable "logging_bucket_arn" {
+  description = "ARN of the S3 bucket for storing logs."
+  type        = string
+}
+
 variable "logging_bucket_name" {
   description = "Name of the S3 bucket for storing logs. Must be globally unique."
   type        = string
