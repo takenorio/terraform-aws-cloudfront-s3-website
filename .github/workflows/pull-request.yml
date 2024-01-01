@@ -1,4 +1,4 @@
-name: Code quality and security
+name: Terraform Validation and Documentation
 
 on:
   pull_request:
@@ -74,3 +74,29 @@ jobs:
 
       - name: Terraform validate
         run: terraform validate -no-color
+
+  generate_terraform_docs:
+    name: Terraform docs
+    needs:
+      - terraform_validate
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Render terraform docs and push changes back to PR
+        uses: terraform-docs/gh-actions@v1.0.0
+        with:
+          git-push: "true"
+          output-file: README.md
+          output-method: inject
+          recursive: true
+          working-dir: .
