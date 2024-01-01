@@ -34,6 +34,7 @@ No providers.
 | <a name="module_cdn_distribution"></a> [cdn\_distribution](#module\_cdn\_distribution) | ./modules/cdn-distribution | n/a |
 | <a name="module_domain_certificate"></a> [domain\_certificate](#module\_domain\_certificate) | ./modules/domain-certificate | n/a |
 | <a name="module_logging_bucket"></a> [logging\_bucket](#module\_logging\_bucket) | ./modules/logging-bucket | n/a |
+| <a name="module_redirection_bucket"></a> [redirection\_bucket](#module\_redirection\_bucket) | ./modules/redirection-bucket | n/a |
 | <a name="module_website_bucket"></a> [website\_bucket](#module\_website\_bucket) | ./modules/website-bucket | n/a |
 
 ## Resources
@@ -47,6 +48,7 @@ No resources.
 | <a name="input_cloudfront_distribution_comment"></a> [cloudfront\_distribution\_comment](#input\_cloudfront\_distribution\_comment) | A comment to describe the CloudFront distribution. | `string` | `"static website"` | no |
 | <a name="input_domain_name"></a> [domain\_name](#input\_domain\_name) | The domain name to be managed by Route53. | `string` | n/a | yes |
 | <a name="input_logging_bucket_name"></a> [logging\_bucket\_name](#input\_logging\_bucket\_name) | Name of the S3 bucket for storing logs. Must be globally unique. | `string` | n/a | yes |
+| <a name="input_redirection_bucket_name"></a> [redirection\_bucket\_name](#input\_redirection\_bucket\_name) | Name of the S3 bucket for storing redirection content. Must be globally unique. | `string` | n/a | yes |
 | <a name="input_website_bucket_name"></a> [website\_bucket\_name](#input\_website\_bucket\_name) | Name of the S3 bucket for storing website content. Must be globally unique. | `string` | n/a | yes |
 
 ## Outputs
@@ -88,6 +90,7 @@ No resources.
 | <a name="output_route53_record_web_fqdn"></a> [route53\_record\_web\_fqdn](#output\_route53\_record\_web\_fqdn) | FQDN built using the zone domain and name (web). |
 | <a name="output_route53_record_web_name"></a> [route53\_record\_web\_name](#output\_route53\_record\_web\_name) | The name of the record (web). |
 | <a name="output_s3_bucket_acl_logs_id"></a> [s3\_bucket\_acl\_logs\_id](#output\_s3\_bucket\_acl\_logs\_id) | The bucket, expected\_bucket\_owner (if configured), and acl (if configured) separated by commas (,) (logs). |
+| <a name="output_s3_bucket_logging_redirection_id"></a> [s3\_bucket\_logging\_redirection\_id](#output\_s3\_bucket\_logging\_redirection\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided (redirection). |
 | <a name="output_s3_bucket_logging_web_id"></a> [s3\_bucket\_logging\_web\_id](#output\_s3\_bucket\_logging\_web\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided (web). |
 | <a name="output_s3_bucket_logs_arn"></a> [s3\_bucket\_logs\_arn](#output\_s3\_bucket\_logs\_arn) | ARN of the bucket (logs). |
 | <a name="output_s3_bucket_logs_domain_name"></a> [s3\_bucket\_logs\_domain\_name](#output\_s3\_bucket\_logs\_domain\_name) | Bucket domain name (logs). |
@@ -97,12 +100,23 @@ No resources.
 | <a name="output_s3_bucket_logs_regional_domain_name"></a> [s3\_bucket\_logs\_regional\_domain\_name](#output\_s3\_bucket\_logs\_regional\_domain\_name) | The bucket region-specific domain name (logs). |
 | <a name="output_s3_bucket_logs_tags_all"></a> [s3\_bucket\_logs\_tags\_all](#output\_s3\_bucket\_logs\_tags\_all) | Map of tags assigned to the resource, including those inherited from the provider default\_tags configuration block (logs). |
 | <a name="output_s3_bucket_ownership_controls_logs_id"></a> [s3\_bucket\_ownership\_controls\_logs\_id](#output\_s3\_bucket\_ownership\_controls\_logs\_id) | S3 Bucket name (logs). |
+| <a name="output_s3_bucket_ownership_controls_redirection_id"></a> [s3\_bucket\_ownership\_controls\_redirection\_id](#output\_s3\_bucket\_ownership\_controls\_redirection\_id) | S3 Bucket name (redirection). |
 | <a name="output_s3_bucket_ownership_controls_web_id"></a> [s3\_bucket\_ownership\_controls\_web\_id](#output\_s3\_bucket\_ownership\_controls\_web\_id) | S3 Bucket name (web). |
 | <a name="output_s3_bucket_public_access_block_logs_id"></a> [s3\_bucket\_public\_access\_block\_logs\_id](#output\_s3\_bucket\_public\_access\_block\_logs\_id) | Name of the S3 bucket the configuration is attached to (logs). |
+| <a name="output_s3_bucket_public_access_block_redirection_id"></a> [s3\_bucket\_public\_access\_block\_redirection\_id](#output\_s3\_bucket\_public\_access\_block\_redirection\_id) | Name of the S3 bucket the configuration is attached to (redirection). |
 | <a name="output_s3_bucket_public_access_block_web_id"></a> [s3\_bucket\_public\_access\_block\_web\_id](#output\_s3\_bucket\_public\_access\_block\_web\_id) | Name of the S3 bucket the configuration is attached to (web). |
+| <a name="output_s3_bucket_redirection_arn"></a> [s3\_bucket\_redirection\_arn](#output\_s3\_bucket\_redirection\_arn) | ARN of the bucket (redirection). |
+| <a name="output_s3_bucket_redirection_domain_name"></a> [s3\_bucket\_redirection\_domain\_name](#output\_s3\_bucket\_redirection\_domain\_name) | Bucket domain name (redirection). |
+| <a name="output_s3_bucket_redirection_hosted_zone_id"></a> [s3\_bucket\_redirection\_hosted\_zone\_id](#output\_s3\_bucket\_redirection\_hosted\_zone\_id) | Route 53 Hosted Zone ID for this bucket's region (redirection). |
+| <a name="output_s3_bucket_redirection_id"></a> [s3\_bucket\_redirection\_id](#output\_s3\_bucket\_redirection\_id) | Name of the bucket (redirection). |
+| <a name="output_s3_bucket_redirection_region"></a> [s3\_bucket\_redirection\_region](#output\_s3\_bucket\_redirection\_region) | AWS region this bucket resides in (redirection). |
+| <a name="output_s3_bucket_redirection_regional_domain_name"></a> [s3\_bucket\_redirection\_regional\_domain\_name](#output\_s3\_bucket\_redirection\_regional\_domain\_name) | The bucket region-specific domain name (redirection). |
+| <a name="output_s3_bucket_redirection_tags_all"></a> [s3\_bucket\_redirection\_tags\_all](#output\_s3\_bucket\_redirection\_tags\_all) | Map of tags assigned to the resource, including those inherited from the provider default\_tags configuration block (redirection). |
 | <a name="output_s3_bucket_server_side_encryption_configuration_logs_id"></a> [s3\_bucket\_server\_side\_encryption\_configuration\_logs\_id](#output\_s3\_bucket\_server\_side\_encryption\_configuration\_logs\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided (logs). |
+| <a name="output_s3_bucket_server_side_encryption_configuration_redirection_id"></a> [s3\_bucket\_server\_side\_encryption\_configuration\_redirection\_id](#output\_s3\_bucket\_server\_side\_encryption\_configuration\_redirection\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided (redirection). |
 | <a name="output_s3_bucket_server_side_encryption_configuration_web_id"></a> [s3\_bucket\_server\_side\_encryption\_configuration\_web\_id](#output\_s3\_bucket\_server\_side\_encryption\_configuration\_web\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided (web). |
 | <a name="output_s3_bucket_versioning_logs_id"></a> [s3\_bucket\_versioning\_logs\_id](#output\_s3\_bucket\_versioning\_logs\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided (logs). |
+| <a name="output_s3_bucket_versioning_redirection_id"></a> [s3\_bucket\_versioning\_redirection\_id](#output\_s3\_bucket\_versioning\_redirection\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided (redirection). |
 | <a name="output_s3_bucket_versioning_web_id"></a> [s3\_bucket\_versioning\_web\_id](#output\_s3\_bucket\_versioning\_web\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided (web). |
 | <a name="output_s3_bucket_web_arn"></a> [s3\_bucket\_web\_arn](#output\_s3\_bucket\_web\_arn) | ARN of the bucket (web). |
 | <a name="output_s3_bucket_web_domain_name"></a> [s3\_bucket\_web\_domain\_name](#output\_s3\_bucket\_web\_domain\_name) | Bucket domain name (web). |
@@ -111,4 +125,7 @@ No resources.
 | <a name="output_s3_bucket_web_region"></a> [s3\_bucket\_web\_region](#output\_s3\_bucket\_web\_region) | AWS region this bucket resides in (web). |
 | <a name="output_s3_bucket_web_regional_domain_name"></a> [s3\_bucket\_web\_regional\_domain\_name](#output\_s3\_bucket\_web\_regional\_domain\_name) | The bucket region-specific domain name (web). |
 | <a name="output_s3_bucket_web_tags_all"></a> [s3\_bucket\_web\_tags\_all](#output\_s3\_bucket\_web\_tags\_all) | Map of tags assigned to the resource, including those inherited from the provider default\_tags configuration block (web). |
+| <a name="output_s3_bucket_website_configuration_redirection_id"></a> [s3\_bucket\_website\_configuration\_redirection\_id](#output\_s3\_bucket\_website\_configuration\_redirection\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided (redirection). |
+| <a name="output_s3_bucket_website_configuration_redirection_website_domain"></a> [s3\_bucket\_website\_configuration\_redirection\_website\_domain](#output\_s3\_bucket\_website\_configuration\_redirection\_website\_domain) | Domain of the website endpoint. This is used to create Route 53 alias records (redirection). |
+| <a name="output_s3_bucket_website_configuration_redirection_website_endpoint"></a> [s3\_bucket\_website\_configuration\_redirection\_website\_endpoint](#output\_s3\_bucket\_website\_configuration\_redirection\_website\_endpoint) | Website endpoint (redirection). |
 <!-- END_TF_DOCS -->
