@@ -3,8 +3,11 @@ name: Validate PR title
 on:
   pull_request_target:
     types:
-      - opened
       - edited
+      - labeled
+      - opened
+      - ready_for_review
+      - reopened
       - synchronize
 
 permissions:
