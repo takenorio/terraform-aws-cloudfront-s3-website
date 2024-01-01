@@ -37,17 +37,12 @@ data "aws_route53_zone" "this" {
   private_zone = false
 }
 
-locals {
-  logging_bucket_domain_name = "${var.logging_bucket_name}.s3.amazonaws.com"
-  website_bucket_domain_name = "${var.website_bucket_name}.s3.amazonaws.com"
-}
-
 # trivy:ignore:AVD-AWS-0011
 resource "aws_cloudfront_distribution" "this" {
   origin {
-    domain_name              = local.website_bucket_domain_name
+    domain_name              = var.website_regional_domain_name
     origin_access_control_id = aws_cloudfront_origin_access_control.this.id
-    origin_id                = local.website_bucket_domain_name
+    origin_id                = var.website_regional_domain_name
     origin_path              = ""
   }
 
@@ -73,7 +68,7 @@ resource "aws_cloudfront_distribution" "this" {
     compress                   = true
     origin_request_policy_id   = data.aws_cloudfront_origin_request_policy.this.id
     response_headers_policy_id = data.aws_cloudfront_response_headers_policy.this.id
-    target_origin_id           = local.website_bucket_domain_name
+    target_origin_id           = var.website_regional_domain_name
     viewer_protocol_policy     = "redirect-to-https"
 
     function_association {
@@ -84,7 +79,7 @@ resource "aws_cloudfront_distribution" "this" {
 
   logging_config {
     include_cookies = false
-    bucket          = local.logging_bucket_domain_name
+    bucket          = var.logging_regional_domain_name
     prefix          = "cloudfront-logs/"
   }
 
@@ -120,7 +115,7 @@ resource "aws_cloudfront_monitoring_subscription" "this" {
 }
 
 resource "aws_cloudfront_origin_access_control" "this" {
-  name                              = local.website_bucket_domain_name
+  name                              = var.website_regional_domain_name
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"

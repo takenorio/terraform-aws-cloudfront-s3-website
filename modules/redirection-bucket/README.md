@@ -20,13 +20,13 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_s3_bucket.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_logging.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_logging) | resource |
-| [aws_s3_bucket_ownership_controls.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_ownership_controls) | resource |
-| [aws_s3_bucket_public_access_block.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_public_access_block) | resource |
-| [aws_s3_bucket_server_side_encryption_configuration.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
-| [aws_s3_bucket_versioning.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_versioning) | resource |
-| [aws_s3_bucket_website_configuration.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_website_configuration) | resource |
+| [aws_s3_bucket.redirection](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket_logging.redirection](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_logging) | resource |
+| [aws_s3_bucket_ownership_controls.redirection](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_ownership_controls) | resource |
+| [aws_s3_bucket_public_access_block.redirection](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_s3_bucket_server_side_encryption_configuration.redirection](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
+| [aws_s3_bucket_versioning.redirection](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_versioning) | resource |
+| [aws_s3_bucket_website_configuration.redirection](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_website_configuration) | resource |
 
 ## Inputs
 
@@ -43,7 +43,7 @@ No modules.
 | <a name="output_s3_bucket_arn"></a> [s3\_bucket\_arn](#output\_s3\_bucket\_arn) | ARN of the bucket. |
 | <a name="output_s3_bucket_domain_name"></a> [s3\_bucket\_domain\_name](#output\_s3\_bucket\_domain\_name) | Bucket domain name. |
 | <a name="output_s3_bucket_hosted_zone_id"></a> [s3\_bucket\_hosted\_zone\_id](#output\_s3\_bucket\_hosted\_zone\_id) | Route 53 Hosted Zone ID for this bucket's region. |
-| <a name="output_s3_bucket_id"></a> [s3\_bucket\_id](#output\_s3\_bucket\_id) | Name of the bucket |
+| <a name="output_s3_bucket_id"></a> [s3\_bucket\_id](#output\_s3\_bucket\_id) | Name of the bucket. |
 | <a name="output_s3_bucket_logging_id"></a> [s3\_bucket\_logging\_id](#output\_s3\_bucket\_logging\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided. |
 | <a name="output_s3_bucket_ownership_controls_id"></a> [s3\_bucket\_ownership\_controls\_id](#output\_s3\_bucket\_ownership\_controls\_id) | S3 Bucket name. |
 | <a name="output_s3_bucket_public_access_block_id"></a> [s3\_bucket\_public\_access\_block\_id](#output\_s3\_bucket\_public\_access\_block\_id) | Name of the S3 bucket the configuration is attached to. |

@@ -20,17 +20,21 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_s3_bucket.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_logging.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_logging) | resource |
-| [aws_s3_bucket_ownership_controls.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_ownership_controls) | resource |
-| [aws_s3_bucket_public_access_block.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_public_access_block) | resource |
-| [aws_s3_bucket_server_side_encryption_configuration.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
-| [aws_s3_bucket_versioning.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_versioning) | resource |
+| [aws_s3_bucket.website](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket_logging.website](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_logging) | resource |
+| [aws_s3_bucket_ownership_controls.website](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_ownership_controls) | resource |
+| [aws_s3_bucket_policy.logging](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_policy) | resource |
+| [aws_s3_bucket_public_access_block.website](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_s3_bucket_server_side_encryption_configuration.website](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
+| [aws_s3_bucket_versioning.website](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_versioning) | resource |
+| [aws_caller_identity.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/data-sources/caller_identity) | data source |
+| [aws_iam_policy_document.logging](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_logging_bucket_arn"></a> [logging\_bucket\_arn](#input\_logging\_bucket\_arn) | ARN of the S3 bucket for storing logs. | `string` | n/a | yes |
 | <a name="input_logging_bucket_name"></a> [logging\_bucket\_name](#input\_logging\_bucket\_name) | Name of the S3 bucket for storing logs. Must be globally unique. | `string` | n/a | yes |
 | <a name="input_website_bucket_name"></a> [website\_bucket\_name](#input\_website\_bucket\_name) | Name of the S3 bucket for storing website content. Must be globally unique. | `string` | n/a | yes |
 
@@ -41,7 +45,7 @@ No modules.
 | <a name="output_s3_bucket_arn"></a> [s3\_bucket\_arn](#output\_s3\_bucket\_arn) | ARN of the bucket. |
 | <a name="output_s3_bucket_domain_name"></a> [s3\_bucket\_domain\_name](#output\_s3\_bucket\_domain\_name) | Bucket domain name. |
 | <a name="output_s3_bucket_hosted_zone_id"></a> [s3\_bucket\_hosted\_zone\_id](#output\_s3\_bucket\_hosted\_zone\_id) | Route 53 Hosted Zone ID for this bucket's region. |
-| <a name="output_s3_bucket_id"></a> [s3\_bucket\_id](#output\_s3\_bucket\_id) | Name of the bucket |
+| <a name="output_s3_bucket_id"></a> [s3\_bucket\_id](#output\_s3\_bucket\_id) | Name of the bucket. |
 | <a name="output_s3_bucket_logging_id"></a> [s3\_bucket\_logging\_id](#output\_s3\_bucket\_logging\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided. |
 | <a name="output_s3_bucket_ownership_controls_id"></a> [s3\_bucket\_ownership\_controls\_id](#output\_s3\_bucket\_ownership\_controls\_id) | S3 Bucket name. |
 | <a name="output_s3_bucket_public_access_block_id"></a> [s3\_bucket\_public\_access\_block\_id](#output\_s3\_bucket\_public\_access\_block\_id) | Name of the S3 bucket the configuration is attached to. |
