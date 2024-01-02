@@ -3,7 +3,7 @@ variable "redirect_target_host_name" {
   type        = string
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\\.[a-zA-Z0-9]([a-zA-Z0-9]{0,61}[a-zA-Z0-9])?)*(\\.[a-zA-Z]{2,})$", var.redirection_host_name)) && length(var.redirection_host_name) <= 255
+    condition     = can(regex("^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\\.[a-zA-Z0-9]([a-zA-Z0-9]{0,61}[a-zA-Z0-9])?)*(\\.[a-zA-Z]{2,})$", var.redirect_target_host_name)) && length(var.redirect_target_host_name) <= 255
     error_message = "The domain name is invalid."
   }
 }
