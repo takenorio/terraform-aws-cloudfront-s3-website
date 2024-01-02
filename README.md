@@ -37,6 +37,7 @@ No providers.
 | <a name="module_domain_certificate"></a> [domain\_certificate](#module\_domain\_certificate) | ./modules/domain-certificate | n/a |
 | <a name="module_logging_bucket"></a> [logging\_bucket](#module\_logging\_bucket) | ./modules/logging-bucket | n/a |
 | <a name="module_redirection_bucket"></a> [redirection\_bucket](#module\_redirection\_bucket) | ./modules/redirection-bucket | n/a |
+| <a name="module_redirection_cdn_distribution"></a> [redirection\_cdn\_distribution](#module\_redirection\_cdn\_distribution) | ./modules/redirection-cdn-distribution | n/a |
 | <a name="module_website_bucket"></a> [website\_bucket](#module\_website\_bucket) | ./modules/website-bucket | n/a |
 
 ## Resources
