@@ -8,6 +8,10 @@ module "domain_certificate" {
   source = "./modules/domain-certificate"
 
   domain_name = var.domain_name
+
+  providers = {
+    aws.us-east-1 = aws.us-east-1
+  }
 }
 
 module "logging_bucket" {
@@ -21,6 +25,10 @@ module "redirection_bucket" {
 
   redirect_target_host_name = module.domain_certificate.acm_certificate_domain_name
   redirection_bucket_name   = local.redirection_bucket_name
+
+  depends_on = [
+    module.domain_certificate,
+  ]
 }
 
 module "website_bucket" {
@@ -28,6 +36,10 @@ module "website_bucket" {
 
   logging_bucket_name = module.logging_bucket.s3_bucket_id
   website_bucket_name = local.website_bucket_name
+
+  depends_on = [
+    module.logging_bucket,
+  ]
 }
 
 module "cdn_distribution" {
@@ -38,4 +50,10 @@ module "cdn_distribution" {
   logging_regional_domain_name = module.logging_bucket.s3_bucket_regional_domain_name
   website_bucket_name          = module.website_bucket.s3_bucket_id
   website_regional_domain_name = module.website_bucket.s3_bucket_regional_domain_name
+
+  depends_on = [
+    module.domain_certificate,
+    module.logging_bucket,
+    module.website_bucket,
+  ]
 }
