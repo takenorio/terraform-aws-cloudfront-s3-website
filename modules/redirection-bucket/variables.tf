@@ -1,15 +1,5 @@
-variable "redirect_target_host_name" {
-  description = "The domain name to be managed by Route53."
-  type        = string
-
-  validation {
-    condition     = can(regex("^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\\.[a-zA-Z0-9]([a-zA-Z0-9]{0,61}[a-zA-Z0-9])?)*(\\.[a-zA-Z]{2,})$", var.redirect_target_host_name)) && length(var.redirect_target_host_name) <= 255
-    error_message = "The domain name is invalid."
-  }
-}
-
 variable "redirection_bucket_name" {
-  description = "Name of the S3 bucket for storing website content. Must be globally unique."
+  description = "Name of the S3 bucket for redirection. Must be globally unique."
   type        = string
 
   validation {

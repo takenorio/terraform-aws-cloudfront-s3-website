@@ -23,14 +23,12 @@ No modules.
 | [aws_s3_bucket.redirection](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_ownership_controls.redirection](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_ownership_controls) | resource |
 | [aws_s3_bucket_public_access_block.redirection](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_public_access_block) | resource |
-| [aws_s3_bucket_website_configuration.redirection](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/s3_bucket_website_configuration) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_redirect_target_host_name"></a> [redirect\_target\_host\_name](#input\_redirect\_target\_host\_name) | The domain name to be managed by Route53. | `string` | n/a | yes |
-| <a name="input_redirection_bucket_name"></a> [redirection\_bucket\_name](#input\_redirection\_bucket\_name) | Name of the S3 bucket for storing website content. Must be globally unique. | `string` | n/a | yes |
+| <a name="input_redirection_bucket_name"></a> [redirection\_bucket\_name](#input\_redirection\_bucket\_name) | Name of the S3 bucket for redirection. Must be globally unique. | `string` | n/a | yes |
 
 ## Outputs
 
@@ -45,7 +43,4 @@ No modules.
 | <a name="output_s3_bucket_region"></a> [s3\_bucket\_region](#output\_s3\_bucket\_region) | AWS region this bucket resides in |
 | <a name="output_s3_bucket_regional_domain_name"></a> [s3\_bucket\_regional\_domain\_name](#output\_s3\_bucket\_regional\_domain\_name) | The bucket region-specific domain name. |
 | <a name="output_s3_bucket_tags_all"></a> [s3\_bucket\_tags\_all](#output\_s3\_bucket\_tags\_all) | Map of tags assigned to the resource, including those inherited from the provider default\_tags configuration block. |
-| <a name="output_s3_bucket_website_configuration_id"></a> [s3\_bucket\_website\_configuration\_id](#output\_s3\_bucket\_website\_configuration\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided. |
-| <a name="output_s3_bucket_website_configuration_website_domain"></a> [s3\_bucket\_website\_configuration\_website\_domain](#output\_s3\_bucket\_website\_configuration\_website\_domain) | Domain of the website endpoint. This is used to create Route 53 alias records. |
-| <a name="output_s3_bucket_website_configuration_website_endpoint"></a> [s3\_bucket\_website\_configuration\_website\_endpoint](#output\_s3\_bucket\_website\_configuration\_website\_endpoint) | Website endpoint. |
 <!-- END_TF_DOCS -->

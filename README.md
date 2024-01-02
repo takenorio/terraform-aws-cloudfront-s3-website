@@ -120,7 +120,4 @@ No resources.
 | <a name="output_s3_bucket_web_region"></a> [s3\_bucket\_web\_region](#output\_s3\_bucket\_web\_region) | AWS region this bucket resides in (web). |
 | <a name="output_s3_bucket_web_regional_domain_name"></a> [s3\_bucket\_web\_regional\_domain\_name](#output\_s3\_bucket\_web\_regional\_domain\_name) | The bucket region-specific domain name (web). |
 | <a name="output_s3_bucket_web_tags_all"></a> [s3\_bucket\_web\_tags\_all](#output\_s3\_bucket\_web\_tags\_all) | Map of tags assigned to the resource, including those inherited from the provider default\_tags configuration block (web). |
-| <a name="output_s3_bucket_website_configuration_redirection_id"></a> [s3\_bucket\_website\_configuration\_redirection\_id](#output\_s3\_bucket\_website\_configuration\_redirection\_id) | The bucket or bucket and expected\_bucket\_owner separated by a comma (,) if the latter is provided (redirection). |
-| <a name="output_s3_bucket_website_configuration_redirection_website_domain"></a> [s3\_bucket\_website\_configuration\_redirection\_website\_domain](#output\_s3\_bucket\_website\_configuration\_redirection\_website\_domain) | Domain of the website endpoint. This is used to create Route 53 alias records (redirection). |
-| <a name="output_s3_bucket_website_configuration_redirection_website_endpoint"></a> [s3\_bucket\_website\_configuration\_redirection\_website\_endpoint](#output\_s3\_bucket\_website\_configuration\_redirection\_website\_endpoint) | Website endpoint (redirection). |
 <!-- END_TF_DOCS -->

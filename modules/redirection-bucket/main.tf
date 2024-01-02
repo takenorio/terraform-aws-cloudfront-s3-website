@@ -21,12 +21,3 @@ resource "aws_s3_bucket_public_access_block" "redirection" {
   ignore_public_acls      = true
   restrict_public_buckets = true
 }
-
-resource "aws_s3_bucket_website_configuration" "redirection" {
-  bucket = aws_s3_bucket.redirection.id
-
-  redirect_all_requests_to {
-    host_name = var.redirect_target_host_name
-    protocol  = "https"
-  }
-}

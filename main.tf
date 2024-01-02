@@ -23,12 +23,7 @@ module "logging_bucket" {
 module "redirection_bucket" {
   source = "./modules/redirection-bucket"
 
-  redirect_target_host_name = module.domain_certificate.acm_certificate_domain_name
-  redirection_bucket_name   = local.redirection_bucket_name
-
-  depends_on = [
-    module.domain_certificate,
-  ]
+  redirection_bucket_name = local.redirection_bucket_name
 }
 
 module "website_bucket" {
