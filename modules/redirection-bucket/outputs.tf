@@ -42,18 +42,3 @@ output "s3_bucket_public_access_block_id" {
   description = "Name of the S3 bucket the configuration is attached to."
   value       = aws_s3_bucket_public_access_block.redirection.id
 }
-
-output "s3_bucket_website_configuration_id" {
-  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided."
-  value       = aws_s3_bucket_website_configuration.redirection.id
-}
-
-output "s3_bucket_website_configuration_website_domain" {
-  description = "Domain of the website endpoint. This is used to create Route 53 alias records."
-  value       = aws_s3_bucket_website_configuration.redirection.website_domain
-}
-
-output "s3_bucket_website_configuration_website_endpoint" {
-  description = "Website endpoint."
-  value       = aws_s3_bucket_website_configuration.redirection.website_endpoint
-}

@@ -273,21 +273,6 @@ output "s3_bucket_public_access_block_redirection_id" {
   value       = module.simple_website.s3_bucket_public_access_block_redirection_id
 }
 
-output "s3_bucket_website_redirection_id" {
-  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (redirection)."
-  value       = module.simple_website.s3_bucket_website_configuration_redirection_id
-}
-
-output "s3_bucket_website_configuration_redirection_website_domain" {
-  description = "Domain of the website endpoint. This is used to create Route 53 alias records (redirection)."
-  value       = module.simple_website.s3_bucket_website_configuration_redirection_website_domain
-}
-
-output "s3_bucket_website_configuration_redirection_website_endpoint" {
-  description = "Website endpoint (redirection)."
-  value       = module.simple_website.s3_bucket_website_configuration_redirection_website_endpoint
-}
-
 output "s3_bucket_web_arn" {
   description = "ARN of the bucket (web)."
   value       = module.simple_website.s3_bucket_web_arn
