@@ -33,11 +33,6 @@ output "s3_bucket_tags_all" {
   value       = aws_s3_bucket.redirection.tags_all
 }
 
-output "s3_bucket_logging_id" {
-  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided."
-  value       = aws_s3_bucket_logging.redirection.id
-}
-
 output "s3_bucket_ownership_controls_id" {
   description = "S3 Bucket name."
   value       = aws_s3_bucket_ownership_controls.redirection.id
@@ -46,16 +41,6 @@ output "s3_bucket_ownership_controls_id" {
 output "s3_bucket_public_access_block_id" {
   description = "Name of the S3 bucket the configuration is attached to."
   value       = aws_s3_bucket_public_access_block.redirection.id
-}
-
-output "s3_bucket_server_side_encryption_configuration_id" {
-  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided."
-  value       = aws_s3_bucket_server_side_encryption_configuration.redirection.id
-}
-
-output "s3_bucket_versioning_id" {
-  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided."
-  value       = aws_s3_bucket_versioning.redirection.id
 }
 
 output "s3_bucket_website_configuration_id" {

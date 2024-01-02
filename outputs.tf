@@ -263,11 +263,6 @@ output "s3_bucket_redirection_tags_all" {
   value       = module.redirection_bucket.s3_bucket_tags_all
 }
 
-output "s3_bucket_logging_redirection_id" {
-  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (redirection)."
-  value       = module.redirection_bucket.s3_bucket_logging_id
-}
-
 output "s3_bucket_ownership_controls_redirection_id" {
   description = "S3 Bucket name (redirection)."
   value       = module.redirection_bucket.s3_bucket_ownership_controls_id
@@ -276,16 +271,6 @@ output "s3_bucket_ownership_controls_redirection_id" {
 output "s3_bucket_public_access_block_redirection_id" {
   description = "Name of the S3 bucket the configuration is attached to (redirection)."
   value       = module.redirection_bucket.s3_bucket_public_access_block_id
-}
-
-output "s3_bucket_server_side_encryption_configuration_redirection_id" {
-  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (redirection)."
-  value       = module.redirection_bucket.s3_bucket_server_side_encryption_configuration_id
-}
-
-output "s3_bucket_versioning_redirection_id" {
-  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (redirection)."
-  value       = module.redirection_bucket.s3_bucket_versioning_id
 }
 
 output "s3_bucket_website_configuration_redirection_id" {

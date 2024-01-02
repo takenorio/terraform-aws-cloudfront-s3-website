@@ -19,15 +19,13 @@ module "logging_bucket" {
 module "redirection_bucket" {
   source = "./modules/redirection-bucket"
 
-  domain_name             = module.domain_certificate.acm_certificate_domain_name
-  logging_bucket_name     = module.logging_bucket.s3_bucket_id
-  redirection_bucket_name = local.redirection_bucket_name
+  redirect_target_host_name = module.domain_certificate.acm_certificate_domain_name
+  redirection_bucket_name   = local.redirection_bucket_name
 }
 
 module "website_bucket" {
   source = "./modules/website-bucket"
 
-  logging_bucket_arn  = module.logging_bucket.s3_bucket_arn
   logging_bucket_name = module.logging_bucket.s3_bucket_id
   website_bucket_name = local.website_bucket_name
 }
