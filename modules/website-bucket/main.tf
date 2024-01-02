@@ -5,7 +5,7 @@ data "aws_iam_policy_document" "logging" {
     sid       = "S3ServerAccessLogsPolicy"
     effect    = "Allow"
     actions   = ["s3:PutObject"]
-    resources = ["${var.logging_bucket_arn}/${local.target_prefix}/*"]
+    resources = ["arn:aws:s3:::${var.logging_bucket_name}/${local.target_prefix}/*"]
 
     principals {
       type        = "Service"
