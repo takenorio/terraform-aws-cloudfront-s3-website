@@ -37,6 +37,20 @@ module "website_bucket" {
   ]
 }
 
+module "redirection_cdn_distribution" {
+  source = "./modules/redirection-cdn-distribution"
+
+  acm_certificate_arn              = module.domain_certificate.acm_certificate_arn
+  domain_name                      = module.domain_certificate.acm_certificate_domain_name
+  redirection_bucket_name          = module.redirection_bucket.s3_bucket_id
+  redirection_regional_domain_name = module.redirection_bucket.s3_bucket_regional_domain_name
+
+  depends_on = [
+    module.domain_certificate,
+    module.redirection_bucket,
+  ]
+}
+
 module "cdn_distribution" {
   source = "./modules/cdn-distribution"
 
