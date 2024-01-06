@@ -7,5 +7,11 @@
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     "@semantic-release/github"
+  ],
+  "releaseRules": [
+    {
+      "type": "chore",
+      "release": "patch"
+    }
   ]
 }
