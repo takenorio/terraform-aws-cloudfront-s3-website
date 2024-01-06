@@ -31,10 +31,6 @@ module "website_bucket" {
 
   logging_bucket_name = module.logging_bucket.s3_bucket_id
   website_bucket_name = local.website_bucket_name
-
-  depends_on = [
-    module.logging_bucket,
-  ]
 }
 
 module "redirection_cdn_distribution" {
@@ -44,25 +40,14 @@ module "redirection_cdn_distribution" {
   domain_name                      = module.domain_certificate.acm_certificate_domain_name
   redirection_bucket_name          = module.redirection_bucket.s3_bucket_id
   redirection_regional_domain_name = module.redirection_bucket.s3_bucket_regional_domain_name
-
-  depends_on = [
-    module.domain_certificate,
-    module.redirection_bucket,
-  ]
 }
 
-module "cdn_distribution" {
-  source = "./modules/cdn-distribution"
+module "website_cdn_distribution" {
+  source = "./modules/website-cdn-distribution"
 
   acm_certificate_arn          = module.domain_certificate.acm_certificate_arn
   domain_name                  = module.domain_certificate.acm_certificate_domain_name
   logging_regional_domain_name = module.logging_bucket.s3_bucket_regional_domain_name
   website_bucket_name          = module.website_bucket.s3_bucket_id
   website_regional_domain_name = module.website_bucket.s3_bucket_regional_domain_name
-
-  depends_on = [
-    module.domain_certificate,
-    module.logging_bucket,
-    module.website_bucket,
-  ]
 }
