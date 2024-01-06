@@ -24,10 +24,14 @@ module "cloudfront_s3_website" {
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.6.6 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.31.0 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | 3.6.0 |
+| <a name="requirement_template"></a> [template](#requirement\_template) | 2.2.0 |
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_random"></a> [random](#provider\_random) | 3.6.0 |
 
 ## Modules
 
@@ -42,7 +46,9 @@ No providers.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [random_string.this](https://registry.terraform.io/providers/hashicorp/random/3.6.0/docs/resources/string) | resource |
 
 ## Inputs
 
