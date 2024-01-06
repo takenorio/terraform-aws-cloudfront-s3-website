@@ -1,7 +1,7 @@
 locals {
-  logging_bucket_name     = "${var.domain_name}-logging"
-  redirection_bucket_name = "${var.domain_name}-redirection"
-  website_bucket_name     = "${var.domain_name}-website"
+  logging_bucket_name     = "${var.domain_name}-logging-${random_string.this.result}"
+  redirection_bucket_name = "${var.domain_name}-redirection-${random_string.this.result}"
+  website_bucket_name     = "${var.domain_name}-website-${random_string.this.result}"
 }
 
 module "domain_certificate" {
@@ -50,4 +50,9 @@ module "website_cdn_distribution" {
   logging_regional_domain_name = module.logging_bucket.s3_bucket_regional_domain_name
   website_bucket_name          = module.website_bucket.s3_bucket_id
   website_regional_domain_name = module.website_bucket.s3_bucket_regional_domain_name
+}
+
+resource "random_string" "this" {
+  length  = 8
+  special = false
 }
