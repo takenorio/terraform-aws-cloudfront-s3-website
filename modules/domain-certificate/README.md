@@ -23,7 +23,7 @@ No modules.
 |------|------|
 | [aws_acm_certificate.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/acm_certificate) | resource |
 | [aws_acm_certificate_validation.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/acm_certificate_validation) | resource |
-| [aws_route53_record.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/route53_record) | resource |
+| [aws_route53_record.certificate](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/resources/route53_record) | resource |
 | [aws_route53_zone.this](https://registry.terraform.io/providers/hashicorp/aws/5.31.0/docs/data-sources/route53_zone) | data source |
 
 ## Inputs
