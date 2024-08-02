@@ -1,7 +1,7 @@
 locals {
-  logging_bucket_name     = "${var.domain_name}-logging-${random_string.this.result}"
-  redirection_bucket_name = "${var.domain_name}-redirection-${random_string.this.result}"
-  website_bucket_name     = "${var.domain_name}-website-${random_string.this.result}"
+  logging_bucket_name     = coalesce(var.logging_bucket_name, "${var.domain_name}-logging-${random_string.this.result}")
+  redirection_bucket_name = coalesce(var.redirection_bucket_name, "${var.domain_name}-redirection-${random_string.this.result}")
+  website_bucket_name     = coalesce(var.website_bucket_name, "${var.domain_name}-website-${random_string.this.result}")
 }
 
 module "domain_certificate" {
