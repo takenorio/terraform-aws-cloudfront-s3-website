@@ -9,8 +9,8 @@ variable "acm_certificate_arn" {
 }
 
 variable "cloudfront_distribution_comment" {
-  description = "A comment to describe the CloudFront distribution."
   type        = string
+  description = "A comment to describe the CloudFront distribution."
   default     = "simple website"
 
   validation {
@@ -20,8 +20,8 @@ variable "cloudfront_distribution_comment" {
 }
 
 variable "domain_name" {
-  description = "The domain name to be managed by Route53."
   type        = string
+  description = "The domain name to be managed by Route53."
 
   validation {
     condition     = can(regex("^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\\.[a-zA-Z0-9]([a-zA-Z0-9]{0,61}[a-zA-Z0-9])?)*(\\.[a-zA-Z]{2,})$", var.domain_name)) && length(var.domain_name) <= 255
@@ -30,18 +30,18 @@ variable "domain_name" {
 }
 
 variable "logging_regional_domain_name" {
-  description = "The logging bucket region-specific domain name."
   type        = string
+  description = "The logging bucket region-specific domain name."
 }
 
 variable "website_regional_domain_name" {
-  description = "The website bucket region-specific domain name."
   type        = string
+  description = "The website bucket region-specific domain name."
 }
 
 variable "website_bucket_name" {
-  description = "Name of the S3 bucket for storing website content. Must be globally unique."
   type        = string
+  description = "Name of the S3 bucket for storing website content. Must be globally unique."
 
   validation {
     condition     = length(var.website_bucket_name) >= 3 && length(var.website_bucket_name) <= 63
