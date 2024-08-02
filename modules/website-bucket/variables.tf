@@ -1,6 +1,6 @@
 variable "logging_bucket_name" {
-  description = "Name of the S3 bucket for storing logs. Must be globally unique."
   type        = string
+  description = "Name of the S3 bucket for storing logs. Must be globally unique."
 
   validation {
     condition     = length(var.logging_bucket_name) >= 3 && length(var.logging_bucket_name) <= 63
@@ -39,8 +39,8 @@ variable "logging_bucket_name" {
 }
 
 variable "website_bucket_name" {
-  description = "Name of the S3 bucket for storing website content. Must be globally unique."
   type        = string
+  description = "Name of the S3 bucket for storing website content. Must be globally unique."
 
   validation {
     condition     = length(var.website_bucket_name) >= 3 && length(var.website_bucket_name) <= 63

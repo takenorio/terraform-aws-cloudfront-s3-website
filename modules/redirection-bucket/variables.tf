@@ -1,6 +1,6 @@
 variable "redirection_bucket_name" {
-  description = "Name of the S3 bucket for redirection. Must be globally unique."
   type        = string
+  description = "Name of the S3 bucket for redirection. Must be globally unique."
 
   validation {
     condition     = length(var.redirection_bucket_name) >= 3 && length(var.redirection_bucket_name) <= 63
