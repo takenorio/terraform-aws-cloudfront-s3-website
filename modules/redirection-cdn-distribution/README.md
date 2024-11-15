@@ -5,14 +5,12 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.31.0 |
-| <a name="requirement_template"></a> [template](#requirement\_template) | >= 2.2.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.31.0 |
-| <a name="provider_template"></a> [template](#provider\_template) | >= 2.2.0 |
 
 ## Modules
 
@@ -33,7 +31,6 @@ No modules.
 | [aws_cloudfront_response_headers_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/cloudfront_response_headers_policy) | data source |
 | [aws_iam_policy_document.redirection](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_route53_zone.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/route53_zone) | data source |
-| [template_file.redirection](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 
 ## Inputs
 
