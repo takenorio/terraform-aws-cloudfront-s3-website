@@ -37,14 +37,6 @@ data "aws_route53_zone" "this" {
   private_zone = false
 }
 
-data "template_file" "redirection" {
-  template = file("${path.module}/function.js.tpl")
-
-  vars = {
-    new_host = var.domain_name
-  }
-}
-
 locals {
   redirect_source_domain_name = "www.${var.domain_name}"
 }
@@ -103,7 +95,10 @@ resource "aws_cloudfront_function" "redirection" {
   runtime = "cloudfront-js-2.0"
   comment = "Redirects www to non-www URLs via 302"
   publish = true
-  code    = data.template_file.redirection.rendered
+
+  code = templatefile("${path.module}/function.js.tftpl", {
+    new_host = var.domain_name
+  })
 }
 
 resource "aws_cloudfront_monitoring_subscription" "redirection" {
