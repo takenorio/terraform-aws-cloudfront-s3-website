@@ -49,9 +49,9 @@ jobs:
 
   terraform_validate:
     name: Terraform format and validation
-    needs:
-      - run_tflint
-      - run_trivy
+    #needs:
+    #  - run_tflint
+    #  - run_trivy
     runs-on: ubuntu-latest
 
     steps:
