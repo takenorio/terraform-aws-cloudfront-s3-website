@@ -1,479 +1,304 @@
 # ----------------------------------------------------------------------------
-# Output from domaion_certificate module
+# Output related to Certificate Manager
 # ----------------------------------------------------------------------------
-# resource of aws_certificate
 output "acm_certificate_arn" {
   description = "ARN of the certificate."
-  value       = module.domain_certificate.acm_certificate_arn
+  value       = aws_acm_certificate.this.arn
 }
 
 output "acm_certificate_domain_name" {
   description = "ARN of the certificate."
-  value       = module.domain_certificate.acm_certificate_domain_name
+  value       = aws_acm_certificate.this.domain_name
 }
 
 output "acm_certificate_domain_validation_options" {
   description = "Set of domain validation objects which can be used to complete certificate validation."
-  value       = module.domain_certificate.acm_certificate_domain_validation_options
+  value       = aws_acm_certificate.this.domain_validation_options
 }
 
 output "acm_certificate_not_after" {
   description = "Expiration date and time of the certificate."
-  value       = module.domain_certificate.acm_certificate_not_after
+  value       = aws_acm_certificate.this.not_after
 }
 
 output "acm_certificate_not_before" {
   description = "Start of the validity period of the certificate."
-  value       = module.domain_certificate.acm_certificate_not_before
+  value       = aws_acm_certificate.this.not_before
 }
 
 output "acm_certificate_pending_renewal" {
   description = "true if a Private certificate eligible for managed renewal is within the early_renewal_duration period."
-  value       = module.domain_certificate.acm_certificate_pending_renewal
+  value       = aws_acm_certificate.this.pending_renewal
 }
 
 output "acm_certificate_renewal_eligibility" {
   description = "Whether the certificate is eligible for managed renewal."
-  value       = module.domain_certificate.acm_certificate_renewal_eligibility
+  value       = aws_acm_certificate.this.renewal_eligibility
 }
 
 output "acm_certificate_renewal_summary" {
   description = "Contains information about the status of ACM's managed renewal for the certificate."
-  value       = module.domain_certificate.acm_certificate_renewal_summary
+  value       = aws_acm_certificate.this.renewal_summary
 }
 
 output "acm_certificate_status" {
   description = "Status of the certificate."
-  value       = module.domain_certificate.acm_certificate_status
+  value       = aws_acm_certificate.this.status
 }
 
 output "acm_certificate_type" {
   description = "Source of the certificate."
-  value       = module.domain_certificate.acm_certificate_type
+  value       = aws_acm_certificate.this.type
 }
 
 output "acm_certificate_tags_all" {
   description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block."
-  value       = module.domain_certificate.acm_certificate_tags_all
+  value       = aws_acm_certificate.this.tags_all
 }
 
 output "acm_certificate_validation_id" {
-  description = "Time at which the certificate was issued"
-  value       = module.domain_certificate.acm_certificate_validation_id
-}
-
-# resource of route53_record
-output "route53_record_fqdn_certificate" {
-  description = "FQDN built using the zone domain and name (certificate)."
-  value       = module.domain_certificate.route53_record_fqdn
-}
-
-output "route53_record_name_certificate" {
-  description = "The name of the record (certificate)."
-  value       = module.domain_certificate.route53_record_name
+  description = "Time at which the certificate was issued."
+  value       = aws_acm_certificate_validation.this.id
 }
 
 # ----------------------------------------------------------------------------
-# Output from logging_bucket module
+# Output related to Simple Storage Service (logging)
 # ----------------------------------------------------------------------------
-# resource of aws_s3_bucket
-output "s3_bucket_arn_logging" {
-  description = "ARN of the bucket (logging)."
-  value       = module.logging_bucket.s3_bucket_arn
+output "s3_bucket_logging_arn" {
+  description = "ARN of the bucket."
+  value       = aws_s3_bucket.logging.arn
 }
 
-output "s3_bucket_domain_name_logging" {
-  description = "Bucket domain name (logging)."
-  value       = module.logging_bucket.s3_bucket_domain_name
+output "s3_bucket_logging_domain_name" {
+  description = "Bucket domain name."
+  value       = aws_s3_bucket.logging.bucket_domain_name
 }
 
-output "s3_bucket_hosted_zone_id_logging" {
-  description = "Route 53 Hosted Zone ID for this bucket's region (logging)."
-  value       = module.logging_bucket.s3_bucket_hosted_zone_id
+output "s3_bucket_logging_hosted_zone_id" {
+  description = "Route 53 Hosted Zone ID for this bucket's region."
+  value       = aws_s3_bucket.logging.hosted_zone_id
 }
 
-output "s3_bucket_id_logging" {
-  description = "Name of the bucket (logging)."
-  value       = module.logging_bucket.s3_bucket_id
+output "s3_bucket_logging_id" {
+  description = "Name of the bucket."
+  value       = aws_s3_bucket.logging.id
 }
 
-output "s3_bucket_region_logging" {
-  description = "AWS region this bucket resides in (logging)."
-  value       = module.logging_bucket.s3_bucket_region
+output "s3_bucket_logging_region" {
+  description = "AWS region this bucket resides in."
+  value       = aws_s3_bucket.logging.region
 }
 
-output "s3_bucket_regional_domain_name_logging" {
-  description = "The bucket region-specific domain name (logging)."
-  value       = module.logging_bucket.s3_bucket_regional_domain_name
+output "s3_bucket_logging_regional_domain_name" {
+  description = "The bucket region-specific domain name."
+  value       = aws_s3_bucket.logging.bucket_regional_domain_name
 }
 
-output "s3_bucket_tags_all_logging" {
-  description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block (logging)."
-  value       = module.logging_bucket.s3_bucket_tags_all
+output "s3_bucket_logging_tags_all" {
+  description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block."
+  value       = aws_s3_bucket.logging.tags_all
 }
 
-# resource of aws_s3_bucket_acl
-output "s3_bucket_acl_id_logging" {
-  description = "The bucket, expected_bucket_owner (if configured), and acl (if configured) separated by commas (,) (logging)."
-  value       = module.logging_bucket.s3_bucket_acl_id
+output "s3_bucket_acl_logging_id" {
+  description = "The bucket, expected_bucket_owner (if configured), and acl (if configured) separated by commas (,)."
+  value       = aws_s3_bucket_acl.logging.id
 }
 
-# resource of aws_s3_bucket_ownership_controls
-output "s3_bucket_ownership_controls_id_logging" {
-  description = "S3 Bucket name (logging)."
-  value       = module.logging_bucket.s3_bucket_ownership_controls_id
+output "s3_bucket_ownership_controls_logging_id" {
+  description = "S3 Bucket name."
+  value       = aws_s3_bucket_ownership_controls.logging.id
 }
 
-# resource of aws_s3_bucket_public_access_block
-output "s3_bucket_public_access_block_id_logging" {
-  description = "Name of the S3 bucket the configuration is attached to (logging)."
-  value       = module.logging_bucket.s3_bucket_public_access_block_id
+output "s3_bucket_public_access_block_logging_id" {
+  description = "Name of the S3 bucket the configuration is attached to."
+  value       = aws_s3_bucket_public_access_block.logging.id
 }
 
-# resource of aws_s3_bucket_server_side_encryption_configuration
-output "s3_bucket_server_side_encryption_configuration_id_logging" {
-  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (logging)."
-  value       = module.logging_bucket.s3_bucket_server_side_encryption_configuration_id
+output "s3_bucket_server_side_encryption_configuration_logging_id" {
+  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided."
+  value       = aws_s3_bucket_server_side_encryption_configuration.logging.id
 }
 
-# resource of aws_s3_bucket_versioning
-output "s3_bucket_versioning_id_logging" {
-  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (logging)."
-  value       = module.logging_bucket.s3_bucket_versioning_id
+output "s3_bucket_versioning_logging_id" {
+  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided."
+  value       = aws_s3_bucket_versioning.logging.id
 }
 
 # ----------------------------------------------------------------------------
-# Output from redirection_bucket module
+# Output related to Simple Storage Service (website)
 # ----------------------------------------------------------------------------
-# resource of aws_s3_bucket
-output "s3_bucket_arn_redirection" {
-  description = "ARN of the bucket (redirection)."
-  value       = module.redirection_bucket.s3_bucket_arn
+output "s3_bucket_website_arn" {
+  description = "ARN of the bucket."
+  value       = aws_s3_bucket.website.arn
 }
 
-output "s3_bucket_domain_name_redirection" {
-  description = "Bucket domain name (redirection)."
-  value       = module.redirection_bucket.s3_bucket_domain_name
+output "s3_bucket_website_domain_name" {
+  description = "Bucket domain name."
+  value       = aws_s3_bucket.website.bucket_domain_name
 }
 
-output "s3_bucket_hosted_zone_id_redirection" {
-  description = "Route 53 Hosted Zone ID for this bucket's region (redirection)."
-  value       = module.redirection_bucket.s3_bucket_hosted_zone_id
+output "s3_bucket_website_hosted_zone_id" {
+  description = "Route 53 Hosted Zone ID for this bucket's region."
+  value       = aws_s3_bucket.website.hosted_zone_id
 }
 
-output "s3_bucket_id_redirection" {
-  description = "Name of the bucket (redirection)."
-  value       = module.redirection_bucket.s3_bucket_id
+output "s3_bucket_website_id" {
+  description = "Name of the bucket."
+  value       = aws_s3_bucket.website.id
 }
 
-output "s3_bucket_region_redirection" {
-  description = "AWS region this bucket resides in (redirection)."
-  value       = module.redirection_bucket.s3_bucket_region
+output "s3_bucket_website_region" {
+  description = "AWS region this bucket resides in"
+  value       = aws_s3_bucket.website.region
 }
 
-output "s3_bucket_regional_domain_name_redirection" {
-  description = "The bucket region-specific domain name (redirection)."
-  value       = module.redirection_bucket.s3_bucket_regional_domain_name
+output "s3_bucket_website_regional_domain_name" {
+  description = "The bucket region-specific domain name."
+  value       = aws_s3_bucket.website.bucket_regional_domain_name
 }
 
-output "s3_bucket_tags_all_redirection" {
-  description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block (redirection)."
-  value       = module.redirection_bucket.s3_bucket_tags_all
+output "s3_bucket_website_tags_all" {
+  description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block."
+  value       = aws_s3_bucket.website.tags_all
 }
 
-# resource of aws_s3_bucket_ownership_controls
-output "s3_bucket_ownership_controls_id_redirection" {
-  description = "S3 Bucket name (redirection)."
-  value       = module.redirection_bucket.s3_bucket_ownership_controls_id
+output "s3_bucket_logging_website_id" {
+  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided."
+  value       = aws_s3_bucket_logging.website.id
 }
 
-# resource of aws_s3_bucket_public_access_block
-output "s3_bucket_public_access_block_id_redirection" {
-  description = "Name of the S3 bucket the configuration is attached to (redirection)."
-  value       = module.redirection_bucket.s3_bucket_public_access_block_id
+output "s3_bucket_ownership_controls_website_id" {
+  description = "S3 Bucket name."
+  value       = aws_s3_bucket_ownership_controls.website.id
 }
 
-# ----------------------------------------------------------------------------
-# Output from website_bucket module
-# ----------------------------------------------------------------------------
-# resource of aws_s3_bucket
-output "s3_bucket_arn_website" {
-  description = "ARN of the bucket (website)."
-  value       = module.website_bucket.s3_bucket_arn
+output "s3_bucket_public_access_block_website_id" {
+  description = "Name of the S3 bucket the configuration is attached to."
+  value       = aws_s3_bucket_public_access_block.website.id
 }
 
-output "s3_bucket_domain_name_website" {
-  description = "Bucket domain name (website)."
-  value       = module.website_bucket.s3_bucket_domain_name
+output "s3_bucket_server_side_encryption_configuration_website_id" {
+  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided."
+  value       = aws_s3_bucket_server_side_encryption_configuration.website.id
 }
 
-output "s3_bucket_hosted_zone_id_website" {
-  description = "Route 53 Hosted Zone ID for this bucket's region (website)."
-  value       = module.website_bucket.s3_bucket_hosted_zone_id
-}
-
-output "s3_bucket_id_website" {
-  description = "Name of the bucket (website)."
-  value       = module.website_bucket.s3_bucket_id
-}
-
-output "s3_bucket_region_website" {
-  description = "AWS region this bucket resides in (website)."
-  value       = module.website_bucket.s3_bucket_region
-}
-
-output "s3_bucket_regional_domain_name_website" {
-  description = "The bucket region-specific domain name (website)."
-  value       = module.website_bucket.s3_bucket_regional_domain_name
-}
-
-output "s3_bucket_tags_all_website" {
-  description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block (website)."
-  value       = module.website_bucket.s3_bucket_tags_all
-}
-
-# resource of aws_s3_bucket_logging
-output "s3_bucket_logging_id_website" {
-  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (website)."
-  value       = module.website_bucket.s3_bucket_logging_id
-}
-
-# resource of aws_s3_bucket_ownership_controls
-output "s3_bucket_ownership_controls_id_website" {
-  description = "S3 Bucket name (website)."
-  value       = module.website_bucket.s3_bucket_ownership_controls_id
-}
-
-# resource of aws_s3_bucket_public_access_block
-output "s3_bucket_public_access_block_id_website" {
-  description = "Name of the S3 bucket the configuration is attached to (website)."
-  value       = module.website_bucket.s3_bucket_public_access_block_id
-}
-
-# resource of aws_s3_bucket_server_side_encryption_configuration
-output "s3_bucket_server_side_encryption_configuration_id_website" {
-  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (website)."
-  value       = module.website_bucket.s3_bucket_server_side_encryption_configuration_id
-}
-
-# resource of aws_s3_bucket_versioning
-output "s3_bucket_versioning_id_website" {
-  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided (website)."
-  value       = module.website_bucket.s3_bucket_versioning_id
+output "s3_bucket_versioning_website_id" {
+  description = "The bucket or bucket and expected_bucket_owner separated by a comma (,) if the latter is provided."
+  value       = aws_s3_bucket_versioning.website.id
 }
 
 # ----------------------------------------------------------------------------
-# Output from redirection_cdn_distribution module
+# Output related to CloudFront
 # ----------------------------------------------------------------------------
-# resource of aws_cloudfront_distribution
-output "cloudfront_distribution_arn_redirection" {
-  description = "ARN for the distribution (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_distribution_arn
+output "cloudfront_distribution_arn" {
+  description = "ARN for the distribution."
+  value       = aws_cloudfront_distribution.this.arn
 }
 
-output "cloudfront_distribution_caller_reference_redirection" {
-  description = "Internal value used by CloudFront to allow future updates to the distribution configuration (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_distribution_caller_reference
+output "cloudfront_distribution_caller_reference" {
+  description = "Internal value used by CloudFront to allow future updates to the distribution configuration."
+  value       = aws_cloudfront_distribution.this.caller_reference
 }
 
-output "cloudfront_distribution_domain_name_redirection" {
-  description = "Domain name corresponding to the distribution (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_distribution_domain_name
+output "cloudfront_distribution_domain_name" {
+  description = "Domain name corresponding to the distribution."
+  value       = aws_cloudfront_distribution.this.domain_name
 }
 
-output "cloudfront_distribution_etag_redirection" {
-  description = "Current version of the distribution's information (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_distribution_etag
+output "cloudfront_distribution_etag" {
+  description = "Current version of the distribution's information."
+  value       = aws_cloudfront_distribution.this.etag
 }
 
-output "cloudfront_distribution_hosted_zone_id_redirection" {
-  description = "CloudFront Route 53 zone ID that can be used to route an Alias Resource Record Set to (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_distribution_hosted_zone_id
+output "cloudfront_distribution_hosted_zone_id" {
+  description = "CloudFront Route 53 zone ID that can be used to route an Alias Resource Record Set to."
+  value       = aws_cloudfront_distribution.this.hosted_zone_id
 }
 
-output "cloudfront_distribution_id_redirection" {
-  description = "Identifier for the distribution (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_distribution_id
+output "cloudfront_distribution_id" {
+  description = "Identifier for the distribution."
+  value       = aws_cloudfront_distribution.this.id
 }
 
-output "cloudfront_distribution_in_progress_validation_batches_redirection" {
-  description = "Number of invalidation batches currently in progress (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_distribution_in_progress_validation_batches
+output "cloudfront_distribution_in_progress_validation_batches" {
+  description = "Number of invalidation batches currently in progress."
+  value       = aws_cloudfront_distribution.this.in_progress_validation_batches
 }
 
-output "cloudfront_distribution_last_modified_time_redirection" {
-  description = "Date and time the distribution was last modified (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_distribution_last_modified_time
+output "cloudfront_distribution_last_modified_time" {
+  description = "Date and time the distribution was last modified."
+  value       = aws_cloudfront_distribution.this.last_modified_time
 }
 
-output "cloudfront_distribution_status_redirection" {
-  description = "Current status of the distribution. Deployed if the distribution's information is fully propagated throughout the Amazon CloudFront system (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_distribution_status
+output "cloudfront_distribution_status" {
+  description = "Current status of the distribution. Deployed if the distribution's information is fully propagated throughout the Amazon CloudFront system."
+  value       = aws_cloudfront_distribution.this.status
 }
 
-output "cloudfront_distribution_tags_all_redirection" {
-  description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_distribution_tags_all
+output "cloudfront_distribution_tags_all" {
+  description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block."
+  value       = aws_cloudfront_distribution.this.last_modified_time
 }
 
-output "cloudfront_distribution_trusted_signers_redirection" {
-  description = "List of nested attributes for active trusted signers, if the distribution is set up to serve private content with signed URLs (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_distribution_trusted_signers
+output "cloudfront_distribution_trusted_signers" {
+  description = "List of nested attributes for active trusted signers, if the distribution is set up to serve private content with signed URLs."
+  value       = aws_cloudfront_distribution.this.last_modified_time
 }
 
-# resource of aws_cloudfront_function
-output "cloudfront_function_arn_redirection" {
-  description = "Amazon Resource Name (ARN) identifying your CloudFront Function (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_function_arn
+output "cloudfront_function_arn" {
+  description = "Amazon Resource Name (ARN) identifying your CloudFront Function."
+  value       = aws_cloudfront_function.this.arn
 }
 
-output "cloudfront_function_etag_redirection" {
-  description = "ETag hash of the function. This is the value for the DEVELOPMENT stage of the function (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_function_etag
+output "cloudfront_function_etag" {
+  description = "ETag hash of the function. This is the value for the DEVELOPMENT stage of the function."
+  value       = aws_cloudfront_function.this.etag
 }
 
-output "cloudfront_function_live_stage_etag_redirection" {
+output "cloudfront_function_live_stage_etag" {
   description = "ETag hash of any LIVE stage of the function."
-  value       = module.redirection_cdn_distribution.cloudfront_function_live_stage_etag
+  value       = aws_cloudfront_function.this.live_stage_etag
 }
 
-output "cloudfront_function_status_redirection" {
-  description = "Status of the function. Can be UNPUBLISHED, UNASSOCIATED or ASSOCIATED (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_function_status
+output "cloudfront_function_status" {
+  description = "Status of the function. Can be UNPUBLISHED, UNASSOCIATED or ASSOCIATED."
+  value       = aws_cloudfront_function.this.status
 }
 
-# resource of aws_cloudfront_monitoring_subscription
-output "cloudfront_monitoring_subscription_id_redirection" {
-  description = "The ID of the CloudFront monitoring subscription, which corresponds to the distribution_id (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_monitoring_subscription_id
+output "cloudfront_monitoring_subscription_id" {
+  description = "The ID of the CloudFront monitoring subscription, which corresponds to the distribution_id."
+  value       = aws_cloudfront_monitoring_subscription.this.id
 }
 
-# resource of aws_cloudfront_origin_access_control
-output "cloudfront_origin_access_control_etag_redirection" {
-  description = "The current version of this Origin Access Control (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_origin_access_control_etag
+output "cloudfront_origin_access_control_etag" {
+  description = "The current version of this Origin Access Control."
+  value       = aws_cloudfront_origin_access_control.this.etag
 }
 
-output "cloudfront_origin_access_control_id_redirection" {
-  description = "The unique identifier of this Origin Access Control (redirection)."
-  value       = module.redirection_cdn_distribution.cloudfront_origin_access_control_id
-}
-
-# resource of route53_record
-output "route53_record_fqdn_redirection" {
-  description = "FQDN built using the zone domain and name (redirection)."
-  value       = module.redirection_cdn_distribution.route53_record_fqdn
-}
-
-output "route53_record_name_redirection" {
-  description = "The name of the record (redirection)."
-  value       = module.redirection_cdn_distribution.route53_record_name
+output "cloudfront_origin_access_control_id" {
+  description = "The unique identifier of this Origin Access Control."
+  value       = aws_cloudfront_origin_access_control.this.id
 }
 
 # ----------------------------------------------------------------------------
-# Output from website_cdn_distribution module
+# Output related to Route 53
 # ----------------------------------------------------------------------------
-# resource of aws_cloudfront_distribution
-output "cloudfront_distribution_arn_website" {
-  description = "ARN for the distribution (website)."
-  value       = module.website_cdn_distribution.cloudfront_distribution_arn
+output "route53_record_certificate_fqdn" {
+  description = "FQDN built using the zone domain and name."
+  value       = aws_route53_record.certificate[var.domain_name].fqdn
 }
 
-output "cloudfront_distribution_caller_reference_website" {
-  description = "Internal value used by CloudFront to allow future updates to the distribution configuration (website)."
-  value       = module.website_cdn_distribution.cloudfront_distribution_caller_reference
+output "route53_record_certificate_name" {
+  description = "The name of the record."
+  value       = aws_route53_record.certificate[var.domain_name].name
 }
 
-output "cloudfront_distribution_domain_name_website" {
-  description = "Domain name corresponding to the distribution (website)."
-  value       = module.website_cdn_distribution.cloudfront_distribution_domain_name
+output "route53_record_website_fqdn" {
+  description = "FQDN built using the zone domain and name."
+  value       = "aws_route53_record.this[var.domain_name].fqdn"
 }
 
-output "cloudfront_distribution_etag_website" {
-  description = "Current version of the distribution's information (website)."
-  value       = module.website_cdn_distribution.cloudfront_distribution_etag
-}
-
-output "cloudfront_distribution_hosted_zone_id_website" {
-  description = "CloudFront Route 53 zone ID that can be used to route an Alias Resource Record Set to (website)."
-  value       = module.website_cdn_distribution.cloudfront_distribution_hosted_zone_id
-}
-
-output "cloudfront_distribution_id_website" {
-  description = "Identifier for the distribution (website)."
-  value       = module.website_cdn_distribution.cloudfront_distribution_id
-}
-
-output "cloudfront_distribution_in_progress_validation_batches_website" {
-  description = "Number of invalidation batches currently in progress (website)."
-  value       = module.website_cdn_distribution.cloudfront_distribution_in_progress_validation_batches
-}
-
-output "cloudfront_distribution_last_modified_time_website" {
-  description = "Date and time the distribution was last modified (website)."
-  value       = module.website_cdn_distribution.cloudfront_distribution_last_modified_time
-}
-
-output "cloudfront_distribution_status_website" {
-  description = "Current status of the distribution. Deployed if the distribution's information is fully propagated throughout the Amazon CloudFront system (website)."
-  value       = module.website_cdn_distribution.cloudfront_distribution_status
-}
-
-output "cloudfront_distribution_tags_all_website" {
-  description = "Map of tags assigned to the resource, including those inherited from the provider default_tags configuration block (website)."
-  value       = module.website_cdn_distribution.cloudfront_distribution_tags_all
-}
-
-output "cloudfront_distribution_trusted_signers_website" {
-  description = "List of nested attributes for active trusted signers, if the distribution is set up to serve private content with signed URLs (website)."
-  value       = module.website_cdn_distribution.cloudfront_distribution_trusted_signers
-}
-
-# resource of aws_cloudfront_function
-output "cloudfront_function_arn_website" {
-  description = "Amazon Resource Name (ARN) identifying your CloudFront Function (website)."
-  value       = module.website_cdn_distribution.cloudfront_function_arn
-}
-
-output "cloudfront_function_etag_website" {
-  description = "ETag hash of the function. This is the value for the DEVELOPMENT stage of the function (website)."
-  value       = module.website_cdn_distribution.cloudfront_function_etag
-}
-
-output "cloudfront_function_live_stage_etag_website" {
-  description = "ETag hash of any LIVE stage of the function (website)."
-  value       = module.website_cdn_distribution.cloudfront_function_live_stage_etag
-}
-
-output "cloudfront_function_status_website" {
-  description = "Status of the function. Can be UNPUBLISHED, UNASSOCIATED or ASSOCIATED (website)."
-  value       = module.website_cdn_distribution.cloudfront_function_status
-}
-
-# resource of aws_cloudfront_monitoring_subscription
-output "cloudfront_monitoring_subscription_id_website" {
-  description = "The ID of the CloudFront monitoring subscription, which corresponds to the distribution_id (website)."
-  value       = module.website_cdn_distribution.cloudfront_monitoring_subscription_id
-}
-
-# resource of aws_cloudfront_origin_access_control
-output "cloudfront_origin_access_control_etag_website" {
-  description = "The current version of this Origin Access Control (website)."
-  value       = module.website_cdn_distribution.cloudfront_origin_access_control_etag
-}
-
-output "cloudfront_origin_access_control_id_website" {
-  description = "The unique identifier of this Origin Access Control (website)."
-  value       = module.website_cdn_distribution.cloudfront_origin_access_control_id
-}
-
-# resource of route53_record
-output "route53_record_fqdn_website" {
-  description = "FQDN built using the zone domain and name (website)."
-  value       = module.website_cdn_distribution.route53_record_fqdn
-}
-
-output "route53_record_name_website" {
-  description = "The name of the record (website)."
-  value       = module.website_cdn_distribution.route53_record_name
+output "route53_record_website_name" {
+  description = "The name of the record."
+  value       = "aws_route53_record.this[var.domain_name].name"
 }
