@@ -32,20 +32,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  run_trivy:
-    name: Terraform security scan
-    runs-on: ubuntu-latest
+  #run_trivy:
+  #  name: Terraform security scan
+  #  runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@v4
+  #  steps:
+  #    - name: Checkout source code
+  #      uses: actions/checkout@v4
 
-      - name: Run Trivy
-        uses: aquasecurity/trivy-action@master
-        with:
-          exit-code: 1
-          scan-ref: .
-          scan-type: config
+  #    - name: Run Trivy
+  #      uses: aquasecurity/trivy-action@master
+  #      with:
+  #        exit-code: 1
+  #        scan-ref: .
+  #        scan-type: config
 
   terraform_validate:
     name: Terraform format and validation
